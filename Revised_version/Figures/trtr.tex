@@ -1,0 +1,59 @@
+\begin{figure}[t]
+    \centering
+
+\begin{tikzpicture}[line width = 0.6pt,
+box/.style={draw,rounded corners, minimum width = 50,minimum height=30,align=center,text=white,font=\bfseries,fill=black!60!blue},
+tt/.style={text=white,font=\bfseries},
+arrow/.style={line width = 1pt},
+scale = \trtrscale,
+every node/.style={scale=\trtrscale},
+]
+
+\def\yone{2}
+
+\def\xone{4}
+\def\xtwo{8}
+\def\xthree{12}
+\def\minheight{30}
+\def\minwidth{50}
+
+\node[box] (synth) at (0,0){Synthetic \\ Samples};
+\node[box] (real) at (0,\yone){Real \\ Samples};
+
+\node[box] (ts) at (\xone,0){TS LSTM};
+\node[box] (tr) at (\xone,\yone){TR LSTM};
+
+
+\node[box] (synth1) at (\xtwo,0){Synthetic \\ Samples};
+\node[box] (real1) at (\xtwo,\yone){Real \\ Samples};
+
+\def\trtrcol{PineGreen}
+\def\tstrcol{RoyalBlue}
+\def\trtscol{Orange}
+
+\node[box,tt,fill=\trtrcol] (trtr) at (\xthree,3){TRTR};
+\node[box,tt,fill=\tstrcol] (tstr) at (\xthree,1){TSTR};
+\node[box,tt,fill=\trtscol] (trts) at (\xthree,-1){TRTS};
+
+
+\draw[arrow] (real) -- node[above=1cm,font=\bfseries]{TRAIN}(tr);
+\draw[arrow] (synth) -- (ts);
+
+\draw[arrow,draw=\trtrcol] (tr.10) -- node[above=0.84cm,font=\bfseries]{TEST}(real1.170);
+\draw[arrow,rounded corners=0.3cm,\trtscol] (tr.-10) -- + (11mm,0mm) |- (synth1.west);
+
+%empty patch
+\node[fill=white,rectangle,scale=0.5,below right = -0.20cm and 0.50 cm of tr,minimum size = 0.25 cm,anchor=west,rotate=-45] (emp1) {};
+
+\draw[arrow,\tstrcol,rounded corners=0.3cm] (ts.east) -- + (7mm,0mm) |- (real1.190);
+
+\def\arrowbend{10}
+\draw[arrow,rounded corners,\trtrcol] (real1.10) -- + (\arrowbend mm,0) |- (trtr.west);
+\draw[arrow,rounded corners,\tstrcol] (real1.-10) -- + (\arrowbend mm,0) |- (tstr.west);
+\draw[arrow,rounded corners,\trtscol] (synth1.east) -- + (\arrowbend mm,0) |- (trts.west);
+
+\end{tikzpicture}
+    \caption{Evaluation metrics methods used for auto-regression.} %, including TSTR and TRTS}
+    \label{fig:trtr}
+\end{figure}
+

@@ -1,0 +1,19 @@
+\begin{algorithm}[t]
+\caption{Weighted Federated Averaging [F2A]}
+\label{alg:weighted_fed_avg}
+\textbf{ Input:} model\_weights $w_m$, contribution $c$
+\begin{algorithmic}[1]
+%\Function{weighted\_fed\_average}{, }
+    \State $w_{\mathrm{avg}}$ $\gets$ $w_m[0, :]$ \Comment{First row of $w_m$}
+    \For{$j$ $\gets$ 0 to \texttt{len}($w_{\mathrm{avg}}$)}
+        \State $t_w \gets$ \texttt{zeros\_like}($w_m[0, j]$)
+        \For{$i \gets 0$ to \texttt{rows}($w_m$)} \Comment{Loop over rows of $w_m$}
+            \State $t_w \gets t_w + c[i]  w_m[i, j]$
+        \EndFor
+        \State $w_{\mathrm{avg}}[j] \gets t_w$
+    \EndFor
+    \State \Return w\_avg
+%\EndFunction
+\end{algorithmic}
+\end{algorithm}
+

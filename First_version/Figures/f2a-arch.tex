@@ -1,0 +1,136 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[mylabel/.style={anchor=north west,font=\bfseries},
+mylabel1/.style={anchor=north west,xshift=0.4 cm,font=\bfseries},font=\normalsize,scale=\ftouscale,every node/.style={scale=\ftouscale,rounded corners},line width = 0.6pt]
+
+\newcommand\workwidth{110}
+\newcommand\workheight{50}
+\newcommand\workdist{2.4}
+
+\newcommand\servheight{3.0cm}
+\newcommand\genx{-0.3}
+
+    \node[draw,rectangle,rounded corners,minimum width=4cm,minimum height=\servheight,fill=servcol, label={[mylabel]north west:Server}] (serv) at (-1.1,0) {};
+    
+    \node[draw,rectangle,rounded corners,fill=white] (merg) at (\genx,-\servheight/2) {Feed Back};
+    
+    \node[draw,rectangle,rounded corners,minimum width=\workwidth,minimum height=\workheight,fill=workcol, label={[mylabel1]Worker}] (work1) at (3.2,\workdist) {}; 
+    \node[draw,rectangle,rounded corners,minimum width=\workwidth,minimum height=\workheight,fill=workcol,label={[mylabel1]Worker}] (work2) at (3.2,0) {}; 
+    \node[draw,rectangle,rounded corners,minimum width=\workwidth,minimum height=\workheight,fill=workcol,label={[mylabel1]Worker}] (work3) at (3.2,-\workdist) {}; 
+    
+    \node[draw,rectangle,fill=white] (gen) at ( \genx,-0.4) {Generator};
+    \node[draw,rectangle,fill=white] (noise) at ( \genx-2.0,-0.4) {Noise};
+    
+\newcommand\discx{3.4cm}
+\newcommand\discy{1.9cm}
+\newcommand\discydis{2.4cm}
+
+    \node[draw,rectangle,fill=white] (disc1) at (\discx,\discy) {Discriminator};
+    \node[draw,rectangle,fill=white] (disc2) at (\discx,\discy-\discydis) {Discriminator};
+    \node[draw,rectangle,fill=white] (disc3) at (\discx,\discy-\discydis*2) {Discriminator};
+    
+\newcommand\fakesize{0.6cm}
+\newcommand\fakey{0.9}
+\newcommand\fakedist{0.1}
+
+    \node[draw,sharp corners,align=center,minimum size=\fakesize,fill=white] (fake1) at (\genx,\fakey) {};
+    \node[draw,sharp corners,align=center,minimum size=\fakesize,fill=white] (fake2) at (\genx+\fakedist,\fakey-\fakedist) {};
+    \node[draw,sharp corners,align=center,minimum size=\fakesize,fill=white] (fake3) at (\genx+\fakedist*2,\fakey-\fakedist*2) {};
+
+\newcommand\dbwidth{5mm}
+\newcommand\dbheight{5mm}
+\newcommand\dbx{1.7}
+\newcommand\dby{2.8}
+\newcommand\dbydist{2.4}
+
+    \node[cylinder,sharp corners,draw=black,aspect = 0.5,shape border rotate = 90,minimum width = \dbwidth, minimum height = \dbheight,fill=white] (db1) at (\dbx,\dby) {};    
+    \node[cylinder,sharp corners,draw=black,aspect = 0.5,shape border rotate = 90,minimum width = \dbwidth, minimum height = \dbheight,fill=white] (db2) at (\dbx,\dby-\dbydist) {}; 
+    \node[cylinder,sharp corners,draw=black,aspect = 0.5,shape border rotate = 90,minimum width = \dbwidth, minimum height = \dbheight,fill=white] (db3) at (\dbx,\dby-\dbydist*2) {};
+    
+    \draw[] (noise) -- (gen);
+    \draw[] (merg) -- (gen);
+    \draw[] (gen.north) -- (fake3.237);    
+    % \draw[] (disc1.-5) -- + (8mm,0) |- + (0,-3.5cm) -| (merg.230);
+    % \draw[] (disc2.-5) -- + (7mm,0) |- + (0,-2.0cm) -| (merg.south);
+    % \draw[] (disc3.-5) -- + (6mm,0) |- + (0,-0.5cm) -| (merg.310);
+
+    \draw[rounded corners] (db1.south) |-  (disc1.175); 
+    \draw[rounded corners] (db2.south) |-  (disc2.175); 
+    \draw[rounded corners] (db3.south) |-  (disc3.175); 
+    
+    \newcommand\arrowadjust{5.7mm}
+    
+    \draw[rounded corners] (fake1.93) |-  (disc1.185); 
+    \draw[] (1.084,\fakey + \fakesize *2 + \arrowadjust) |-  (disc2.185);
+    \draw[rounded corners] (1.084,\fakey + \fakesize *2 + \arrowadjust-\discydis) |-  (disc3.185); 
+
+\newcommand\lossxdist{3.5cm}
+\newcommand\lossydist{0.7cm}
+\newcommand\disclossx{1.8}
+\newcommand\fakelossdist{2.9}
+
+\node[draw,rectangle,fill=white] (reall1) at (\discx+\lossxdist,\discy+\lossydist) {Real Loss};
+\node[draw,rectangle,fill=fakecol] (fakel1) at (\discx+\lossxdist,\discy-\fakelossdist) {Fake Loss};
+
+\node[draw,rectangle,fill=white] (reall2) at (\discx+\lossxdist,\discy-\discydis+\lossydist) {Real Loss};
+\node[draw,rectangle,fill=fakecol] (fakel2) at (\discx+\lossxdist,\discy-\discydis-\fakelossdist) {Fake Loss};
+
+\node[draw,rectangle,fill=white] (reall3) at (\discx+\lossxdist,\discy-\discydis*2+\lossydist) {Real Loss};
+\node[draw,rectangle,fill=fakecol] (fakel3) at (\discx+\lossxdist,\discy-\discydis*2-\fakelossdist) {Fake Loss};
+
+\node[draw,rectangle,fill=white,align=center] (avg1) at (\discx+\lossxdist*\disclossx,\discy+\lossydist/2) {Discriminator \\Loss (avg)};
+
+\node[draw,rectangle,fill=white,align=center] (avg2) at (\discx+\lossxdist*\disclossx,\discy+\lossydist/2-\discydis) {Discriminator \\Loss (avg)};
+
+\node[draw,rectangle,fill=white,align=center] (avg3) at (\discx+\lossxdist*\disclossx,\discy+\lossydist/2-\discydis*2) {Discriminator \\Loss (avg)};
+
+
+\draw[rounded corners =2 pt] (disc1.5) -- + (10mm,0) |- (reall1.west);
+\draw[] (disc1.-5) -- (fakel1.west);
+\draw[rounded corners=2 pt] (reall1.5) -- + (3mm,0) |- (avg1.175);
+\draw[rounded corners=2 pt] (fakel1.east) -- + (3mm,0) |- (avg1.185);
+\draw[rounded corners=2 pt] (avg1.north) -- + (0,7mm) -|  (disc1.north);
+
+\draw[rounded corners=2 pt] (disc2.5) -- + (10mm,0) |- (reall2.west);
+\draw[] (disc2.-5) -- (fakel2.west);
+\draw[rounded corners=2 pt] (reall2.5) -- + (3mm,0) |- (avg2.175);
+\draw[rounded corners=2 pt] (fakel2.east) -- + (3mm,0) |- (avg2.185);
+\draw[rounded corners=2 pt] (avg2.north) -- + (0,7mm) -|  (disc2.north);
+
+\draw[rounded corners=2 pt] (disc3.5) -- + (10mm,0) |- (reall3.west);
+\draw[] (disc3.-5) -- (fakel3.west);
+\draw[rounded corners=2 pt] (reall3.5) -- + (3mm,0) |- (avg3.175);
+\draw[rounded corners=2 pt] (fakel3.east) -- + (3mm,0) |- (avg3.185);
+\draw[rounded corners=2 pt] (avg3.north) -- + (0,7mm) -|  (disc3.north);
+
+
+\newcommand\choosedist{0.1}
+\newcommand\choosedistone{1}
+\node[draw,rectangle,fill=bluelight,minimum height=1cm] (softmax) at (5.7,\choosedist-\workdist*2) {SoftMax};
+
+\node[draw,rectangle,fill=bluelight,align=center] (wavg) at (2.3,\choosedist-\workdist*2) {Weighted \\ Average};
+
+\node[draw,rectangle,fill=bluelight,align=center] (gdisc) at (\genx,\choosedist-\workdist*2) {Global \\ Discriminator};
+
+\draw[color=myred,rounded corners] (fakel3.280) |- (softmax.15);
+\draw[color=myred,rounded corners] (fakel2.south) -- + (0,-2mm) -| + (41.5mm,-34.5mm) |- (softmax.east); 
+\draw[color=myred,rounded corners] (fakel1.south) -- + (0,-2mm) -| + (43.5mm,-60mm) |- (softmax.-15); 
+
+
+\draw[] (softmax.west) -- node[above,font=\small,align=center,pos=0.45] {model\\ contribution} (wavg.east);
+\draw[] (wavg.west) -- (gdisc.east);
+\draw[] (gdisc.north) -- (merg.south);
+
+\draw[line width = 1pt, color=myred,densely dashed]  (disc1.200) to [bend right=20]  node[sloped, above] {}  (wavg.120) ;
+\draw[line width = 1pt, color=myred,densely dashed]  (disc2.200) to [bend right=20]  node[sloped, above] {}  (wavg.90) ;
+\draw[line width = 1pt, color=myred,densely dashed]  (disc3.200) to [bend right=20]  node[below,pos=0.5,anchor=west,font = \small] {Discriminator Parameters}  (wavg.60) ;
+
+% \draw[] (mostforg.north) -- (merg.south);    
+% \draw[] (wavg.west) -- + (-3mm,0mm) |- + (6mm,12mm) -| (merg.300);
+
+
+\end{tikzpicture}
+\caption{Schematic of the F2A network using a Softmax function.}
+\label{fig:f2a_arc}
+\end{figure}
+

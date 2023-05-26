@@ -1,0 +1,73 @@
+\def\topcol{myblue}
+\def\spacey{0.8}
+\def\shiftx{-0.4}
+\def\minheight{1.0}
+\def\archscale{0.6}
+\def\scalefix{1.65}
+\begin{figure}[t]
+    \centering
+\subfloat[Generator]{
+\begin{tikzpicture}[line width = 0.6pt,font=\footnotesize,
+arrow/.style={line width= 1.0pt,font=\bfseries},scale=\archscale,every node/.style={scale=\archscale}]
+
+\node[draw,minimum height = \minheight cm,minimum width = 2.2 cm,rounded corners, align = center, rectangle split, rectangle split parts = 2,rectangle split horizontal, rectangle split part fill={\topcol,white}] (inp) at (0,0) {\textbf{\textcolor{white}{Input Size}} \nodepart{two} {[None,128,1]}};
+
+\pic[below left = \spacey and \shiftx of inp,anchor=east]  {layerbox={myblue}{\textbf{1D Transpose Convolution \#1}}{[None,128,1]}{[None,512,5]}{\scalefix}} node [below = \spacey of inp,minimum height = \minheight cm,anchor=center] (lay1) {};
+
+\pic[below left = \spacey and 0.5 of lay1,anchor=east] {layerbox={myblue}{\textbf{1D Transpose Convolution \#2}}{[None,512,5]}{[None,256,9]}{\scalefix}} node [below = \spacey of lay1,minimum height = \minheight cm,anchor=center] (lay2) {};
+
+\pic[below left = \spacey and 0.5 of lay2,anchor=east] {layerbox={myblue}{\textbf{1D Transpose Convolution \#3}}{[None,256, 9]}{[None,128,17]}{\scalefix}}  node [below = \spacey of lay2,minimum height = \minheight cm,anchor=center] (lay3) {};
+
+\pic[below left = \spacey and 0.5 of lay3,anchor=east] {layerbox={myblue}{\textbf{1D Transpose Convolution \#4}}{[None,128,17]}{[None, 64,33]}{\scalefix}}  node [below = \spacey of lay3,minimum height = \minheight cm,anchor=center] (lay4) {};
+
+\pic[below left = \spacey and 0.5 of lay4,anchor=east] {layerbox={myblue}{\textbf{1D Transpose Convolution \#5}}{[None,64,33]}{[None, 8,65]}{\scalefix}}  node [below = \spacey of lay4,minimum height = \minheight cm,anchor=center] (lay5) {};
+
+\node[draw,minimum height = \minheight cm,minimum width = 2.2 cm,rounded corners, align = center, rectangle split, rectangle split parts = 2,rectangle split horizontal, rectangle split part fill={\topcol,white},below = \spacey/1.75 of lay5] (out) {\textbf{\textcolor{white}{Output Size}} \nodepart{two} {[None, 8, 65]}};
+
+\draw[arrow] (inp.south)  --  (lay1.north);
+\draw[arrow] (lay1.south)  -- node[left=0.1 cm] {Batch Norm} node[right=0.1 cm] {ReLU} (lay2.north);
+\draw[arrow] (lay2.south)  -- node[left=0.1 cm] {Batch Norm} node[right=0.1 cm] {ReLU}(lay3.north);
+\draw[arrow] (lay3.south)  -- node[left=0.1 cm] {Batch Norm} node[right=0.1 cm] {ReLU}(lay4.north);
+\draw[arrow] (lay4.south)  -- node[left=0.1 cm] {Batch Norm} node[right=0.1 cm] {ReLU}(lay5.north);
+\draw[arrow] (lay5.south)  -- node[left=0.1 cm] {Sigomid}(out.north);
+
+\node[below=\spacey*2 of out, minimum height = \minheight cm](adjust) {};
+
+\end{tikzpicture}}
+\subfloat[Discriminator]{
+\begin{tikzpicture}[line width = 0.6pt,font=\footnotesize,
+arrow/.style={line width= 1.0pt,font=\bfseries},scale=\archscale,every node/.style={scale=\archscale}]
+
+\node[draw,minimum height = \minheight cm,minimum width = 2.2 cm,rounded corners, align = center, rectangle split, rectangle split parts = 2,rectangle split horizontal, rectangle split part fill={\topcol,white}] (inp) at (0,0) {\textbf{\textcolor{white}{Input Size}} \nodepart{two} {[None, 8, 65]}};
+
+\pic[below left = \spacey and \shiftx of inp,anchor=east]  {layerbox={myblue}{\textbf{1D \\ Convolution \#1}}{[None, 8,65]}{[None,64,65]}{\scalefix}} node [below = \spacey of inp,minimum height = \minheight cm,anchor=center] (lay1) {};
+
+\pic[below left = \spacey and 0.5 of lay1,anchor=east] {layerbox={myblue}{\textbf{1D \\ Convolution \#2}}{[None,64,65]}{[None,64,32]}{\scalefix}} node [below = \spacey of lay1,minimum height = \minheight cm,anchor=center] (lay2) {};
+
+\pic[below left = \spacey and 0.5 of lay2,anchor=east] {layerbox={myblue}{\textbf{1D \\ Convolution \#3}}{[None,  64,32]}{[None,128,32]}{\scalefix}}  node [below = \spacey of lay2,minimum height = \minheight cm,anchor=center] (lay3) {};
+
+\pic[below left = \spacey and 0.5 of lay3,anchor=east] {layerbox={myblue}{\textbf{1D \\ Convolution \#4}}{[None,128,32]}{[None,128,16]}{\scalefix}}  node [below = \spacey of lay3,minimum height = \minheight cm,anchor=center] (lay4) {};
+
+\pic[below left = \spacey and 0.5 of lay4,anchor=east] {layerbox={myblue}{\textbf{1D \\ Convolution \#5}}{[None,128,16]}{[None, 256, 8]}{\scalefix}}  node [below = \spacey of lay4,minimum height = \minheight cm,anchor=center] (lay5) {};
+
+\pic[below left = \spacey and 0.5 of lay5,anchor=east] {layerbox={Emerald}{\textbf{1D Adaptive \\Average Pooling}}{[None,2048]}{[None, 2048]}{\scalefix}}  node [below = \spacey of lay5,minimum height = \minheight cm,anchor=center] (lay6) {};
+
+
+\pic[below left = \spacey and 0.5 of lay6,anchor=east] {layerbox={myblue}{\textbf{Linear\\ Layer}}{[None,2048]}{[None, 1]}{\scalefix}}  node [below = \spacey of lay6,minimum height = \minheight cm,anchor=center] (lay7) {};
+
+\node[draw,minimum height = \minheight cm,minimum width = 2.2 cm,rounded corners, align = center, rectangle split, rectangle split parts = 2,rectangle split horizontal, rectangle split part fill={\topcol,white},below = \spacey/1.75 of lay7] (out) {\textbf{\textcolor{white}{Output Size}} \nodepart{two} {[None, 1]}};
+
+\draw[arrow] (inp.south)  --  (lay1.north);
+\draw[arrow] (lay1.south)  -- node[left=0.1 cm] {Spectral Norm} node[right=0.1 cm]{Leaky ReLU}(lay2.north);
+\draw[arrow] (lay2.south)  -- node[left=0.1 cm] {Spectral Norm} node[right=0.1 cm]{Leaky ReLU}(lay3.north);
+\draw[arrow] (lay3.south)  --node[left=0.1 cm] {Spectral Norm} node[right=0.1 cm]{Leaky ReLU}(lay4.north);
+\draw[arrow] (lay4.south)  -- node[left=0.1 cm] {Spectral Norm} node[right=0.1 cm]{Leaky ReLU}(lay5.north);
+\draw[arrow] (lay5.south)  -- node[left=0.1 cm] {Flatten}(lay6.north);
+\draw[arrow] (lay6.south)  --  (lay7.north);
+\draw[arrow] (lay7.south)  -- node[left=0.1 cm] {Spectral Norm}(out.north);
+
+\end{tikzpicture}}
+    \caption{Generator and discriminator architecture for time-series input.}
+    \label{fig:gan-arch-time}
+\end{figure}
+

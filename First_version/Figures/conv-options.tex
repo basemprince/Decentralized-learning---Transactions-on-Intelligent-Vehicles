@@ -1,0 +1,322 @@
+% \def\nodesize{21}
+% \def\sepcolor{myblue}
+% \def\convscale{0.85}
+
+% \def\rowcount{4}  % feature count
+% \def\colcount{4}  % time width
+
+% \def\separation{3.5 * \convscale}
+
+% \def\distx{0.89*\convscale}
+% \def\disty{0.5*\convscale}
+
+% \begin{figure*}[t]
+%     \centering
+% \subfloat[1D Convolution options]{    
+% \begin{tikzpicture}[line width = 1.1pt,
+%     2d-arr/.style={matrix of nodes,ampersand replacement=\&, nodes={draw,fill=white,minimum size=\nodesize,outer sep=0pt,align=center,font=\bfseries}, row sep=-\pgflinewidth, column sep=-\pgflinewidth,nodes in empty cells,rounded corners=2.5},
+%     arrow/.style={line width =2pt},scale=\convscale,every node/.style={scale=\convscale}]
+
+% \def\xfactor{0.72}
+% \def\stagy{-0.53*\convscale}
+% \def\stagx{-\xfactor*\convscale * \colcount}
+    
+
+% % feature / time matrix 
+
+% \let\mattop\empty
+% \foreach \i in {1,...,\colcount}{%%
+% \xappto\mattop{\rowcount \noexpand\textsubscript{t\i} \noexpand\ifthenelse{\i=\colcount}{}{\&}}
+% }%%
+% \gappto\mattop{\\}
+
+
+% \foreach \i [remember = \i as \il] in {1,...,\rowcount}{
+% \pgfmathtruncatemacro{\help}{\rowcount-\i-1}
+
+% \let\matrest\empty
+% \foreach \row in {1,...,1}{%%
+% \foreach \col in {1,...,\colcount}{%
+% \pgfmathtruncatemacro{\xx}{\row+\help}
+% \pgfmathtruncatemacro{\cyclecounter}{mod(\xx, \rowcount) + 1}
+
+% \pgfmathparse{mod(\i,2)==0?1:0}
+% \ifthenelse{\pgfmathresult=0}{\pgfmathparse{mod(\row, 2) == 0 ? "white" : "\sepcolor"}}{\pgfmathparse{mod(\row, 2) == 0 ? "\sepcolor" : "white"}}
+% \edef\color{\pgfmathresult}
+
+% \pgfmathparse{mod(\i,2)==0?1:0}
+% \ifthenelse{\pgfmathresult=0}{\pgfmathparse{mod(\row, 2) == 0 ? "black" : "white"}}{\pgfmathparse{mod(\row, 2) == 0 ? "white" : "black"}}
+% \edef\colortext{\pgfmathresult}
+
+% \xappto\matrest{\noexpand\node[fill=\color,text=\colortext](m\i-\row-\col){\cyclecounter \noexpand\textsubscript{t\col}}; \noexpand\ifthenelse{\col=\colcount}{}{\&}}
+% }%
+% \gappto\matrest{\\}
+% }%%
+
+% \ifthenelse{\i=1}{\matrix (m1) [2d-arr]{
+% \matrest 
+% };}{
+% \matrix (m\i) [2d-arr,below left =\stagy cm and \stagx cm of m\il]{
+%   \matrest
+% };
+% }
+% }
+
+% \node[below = 0.1 mm of m\rowcount,font=\bfseries] (n1) {1D Conv};
+
+% \def\stagx{-\xfactor*\convscale * \rowcount}
+
+% \draw[arrow,latex-latex,] ([yshift=\distx cm]m1-1-1.west) -- node[above,align=center]{Time} ([yshift=\distx cm]m1-1-\colcount.east);
+
+% \draw[arrow,latex-latex,] ([xshift=-\disty cm]m\rowcount-1-1.north west) -- node[above,sloped,align=center]{Features} ([xshift=-\disty cm]m1-1-1.north west);
+
+
+% % time / feature matrix 
+
+% \foreach \i [remember = \i as \il] in {1,...,\colcount}{
+% \pgfmathtruncatemacro{\xx}{\colcount-\il}
+
+% \let\mattopsw\empty
+% \foreach \j in {1,...,\rowcount}{
+% \pgfmathparse{mod(\j, 2) == 0 ? "white" : "\sepcolor"}
+% \edef\color{\pgfmathresult}
+
+% \pgfmathparse{mod(\j, 2) == 0 ? "black" : "white"}
+% \edef\colortext{\pgfmathresult}
+
+% \xappto\mattopsw{\noexpand\node[fill=\color,text=\colortext] (m\i-1-\j){\j \noexpand\textsubscript{t\xx}}; \noexpand\ifthenelse{\j=\rowcount}{}{\&}}
+% }%%
+% \gappto\mattopsw{\\}
+
+% \ifthenelse{\i=1}{\matrix (m1) [2d-arr,below = \separation cm of m1]{
+% \mattopsw 
+% };}{
+% \matrix (m\i) [2d-arr,below left =\stagy cm and \stagx cm of m\il]{
+%   \mattopsw
+% };
+% }
+% }
+
+
+% \node[below = 0.1 mm of m\colcount,font=\bfseries] (n1) {1D Conv};
+
+% \draw[arrow,latex-latex,] ([yshift=\distx cm]m1-1-1.west) -- node[above,align=center]{Features} ([yshift=\distx cm]m1-1-\rowcount.east);
+
+% \draw[arrow,latex-latex,] ([xshift=-\disty cm]m\colcount-1-1.north west) -- node[above,sloped,align=center]{Time} ([xshift=-\disty cm]m1-1-1.north west);
+
+
+% \end{tikzpicture}}
+% \hspace{1.2 cm}
+% \subfloat[2D Convolution]{\begin{tikzpicture}[line width = 1.1pt,
+%     2d-arr/.style={matrix of nodes,ampersand replacement=\&, nodes={draw,fill=white,minimum size=\nodesize,outer sep=0pt,align=center,font=\bfseries}, row sep=-\pgflinewidth, column sep=-\pgflinewidth,nodes in empty cells,rounded corners=2.5},
+%     arrow/.style={line width =2pt},scale=\convscale,every node/.style={scale=\convscale}]
+
+
+% \def\stagy{-0.7*\convscale * \rowcount}
+% \def\stagx{-0.7*\convscale * \colcount}
+
+% \foreach \i [remember = \i as \il] in {1,...,\rowcount}{
+% \pgfmathtruncatemacro{\help}{\rowcount-\i-1}
+
+% \let\matrest\empty
+% \foreach \row in {1,...,\rowcount}{%%
+% \foreach \col in {1,...,\colcount}{%
+% \pgfmathtruncatemacro{\xx}{\row+\help}
+% \pgfmathtruncatemacro{\cyclecounter}{mod(\xx, \rowcount) + 1}
+
+% \pgfmathparse{mod(\i,2)==0?1:0}
+% \ifthenelse{\pgfmathresult=0}{\pgfmathparse{mod(\row, 2) == 0 ? "white" : "\sepcolor"}}{\pgfmathparse{mod(\row, 2) == 0 ? "\sepcolor" : "white"}}
+% \edef\color{\pgfmathresult}
+
+% \pgfmathparse{mod(\i,2)==0?1:0}
+% \ifthenelse{\pgfmathresult=0}{\pgfmathparse{mod(\row, 2) == 0 ? "black" : "white"}}{\pgfmathparse{mod(\row, 2) == 0 ? "white" : "black"}}
+% \edef\colortext{\pgfmathresult}
+
+% \xappto\matrest{\noexpand\node[fill=\color,text=\colortext](m\i-\row-\col){\cyclecounter \noexpand\textsubscript{t\col}}; \noexpand\ifthenelse{\col=\colcount}{}{\&}}
+% }%
+% \gappto\matrest{\\}
+% }%%
+
+% \ifthenelse{\i=1}{\matrix (m1) [2d-arr]{
+% \matrest 
+% };}{
+% \matrix (m\i) [2d-arr,below left =\stagy cm and \stagx cm of m\il]{
+%   \matrest
+% };
+% }
+% }
+
+% \node[below = 0.1 mm of m\rowcount,font=\bfseries] (n1) {2D Conv};
+
+% \node[below = 4 mm of n1] (spacer) {};
+% \node[below right = 0.1 mm and 2 mm of m\rowcount] (chan) {Channels};
+
+
+% \draw[arrow,latex-latex,] ([yshift=\distx cm]m1-1-1.west) -- node[above,align=center]{Time} ([yshift=\distx cm]m1-1-\colcount.east);
+
+% \draw[arrow,latex-latex,] ([xshift=-\disty cm]m\rowcount-1-1.north west) -- node[above,sloped,align=center]{Features} ([xshift=-\disty cm]m1-1-1.north west);
+
+% \draw[arrow,latex-latex,] ([xshift=-\distx cm]m\rowcount-\rowcount-1.south) -- node[above,sloped,align=center]{Features} ([xshift=-\distx cm]m\rowcount-1-1.north);
+
+% \foreach \i in {1,...,\rowcount}{
+%     \draw[] (chan.north) -- (m\i-\rowcount-\colcount.south east);
+% }
+% \end{tikzpicture}}
+
+%     \caption{Depiction of 1D and 2D convolution layers for time-series analysis with feature count of \rowcount~and time dimension of \colcount. Cell entries are denoted as X\textsubscript{ty}, where X represents the feature number and y denotes the time step. Alternating features are color-coded for enhanced visibility.}
+%     \label{fig:conv-options}
+% \end{figure*}
+
+
+
+% ----------- old --------------
+\def\nodesize{17}
+\def\sepcolor{orange}
+\def\convscale{0.75}
+
+\def\rowcount{5}  % feature count
+\def\colcount{6}  % time width
+
+\def\separation{1.7 * \convscale}
+
+\def\distx{0.89*\convscale}
+\def\disty{0.5*\convscale}
+
+\begin{figure}[t]
+    \centering
+\subfloat[1D Convolution options]{    
+\begin{tikzpicture}[line width = 1.1pt,
+    2d-arr/.style={matrix of nodes,ampersand replacement=\&, nodes={draw,fill=white,minimum size=\nodesize,outer sep=0pt,align=center,font=\scriptsize}, row sep=-\pgflinewidth, column sep=-\pgflinewidth,nodes in empty cells,rounded corners=2.5},
+    arrow/.style={line width =2pt},scale=\convscale,every node/.style={scale=\convscale}]
+
+
+\def\stagy{-0.55*\convscale}
+\def\stagx{-0.6*\convscale * \colcount}
+    
+
+% feature / time matrix 
+
+\let\mattop\empty
+\foreach \i in {1,...,\colcount}{%%
+\xappto\mattop{\rowcount \noexpand\textsubscript{t\i} \noexpand\ifthenelse{\i=\colcount}{}{\&}}
+}%%
+\gappto\mattop{\\}
+
+
+\foreach \i [remember = \i as \il] in {1,...,\rowcount}{
+\pgfmathtruncatemacro{\xx}{\rowcount-\il}
+\pgfmathparse{mod(\rowcount, 2) == 0 ? "black" : "\sepcolor"}
+\edef\colorr{\pgfmathresult}
+
+\ifthenelse{\i=1}{\matrix (m1) [2d-arr,nodes={draw=\colorr}]{
+\mattop 
+};}{
+\let\matrest\empty
+\foreach \i in {1,...,\colcount}{
+\xappto\matrest{\xx \noexpand\textsubscript{t\i} \noexpand\ifthenelse{\i=\colcount}{}{\&}}
+}
+\gappto\matrest{\\}
+
+\ifthenelse{\equal{\colorr}{\sepcolor}}{\pgfmathparse{mod(\i, 2) == 0 ? "black" : "\sepcolor"}}{\pgfmathparse{mod(\i, 2) == 0 ? "\sepcolor" : "black"}}
+\edef\color{\pgfmathresult}
+
+\matrix (m\i) [2d-arr,below left =\stagy cm and \stagx cm of m\il,nodes={draw=\color}]{
+  \matrest
+};
+}
+}
+\node[below = 0.1 mm of m\rowcount,font=\bfseries] (n1) {1D Conv};
+
+
+\def\stagx{-0.6*\convscale * \rowcount}
+
+\draw[arrow,latex-latex,] ([yshift=\distx cm]m1-1-1.west) -- node[above,align=center]{Time} ([yshift=\distx cm]m1-1-\colcount.east);
+
+\draw[arrow,latex-latex,] ([xshift=-\disty cm]m\rowcount-1-1.north west) -- node[above,sloped,align=center]{Features} ([xshift=-\disty cm]m1-1-1.north west);
+
+% % time / feature matrix 
+
+% \foreach \i [remember = \i as \il] in {1,...,\colcount}{
+% \pgfmathtruncatemacro{\xx}{\colcount-\il}
+
+% \let\mattopsw\empty
+% \foreach \j in {1,...,\rowcount}{
+% \pgfmathparse{mod(\j, 2) == 0 ? "black" : "\sepcolor"}
+% \edef\color{\pgfmathresult}
+% \xappto\mattopsw{\noexpand\node[draw=\color] (m\i-1-\j){\j \noexpand\textsubscript{t\xx}}; \noexpand\ifthenelse{\j=\rowcount}{}{\&}}
+% }%%
+% \gappto\mattopsw{\\}
+
+% \ifthenelse{\i=1}{\matrix (m1) [2d-arr,right = \separation cm of m1]{
+% \mattopsw 
+% };}{
+% \matrix (m\i) [2d-arr,below left =\stagy cm and \stagx cm of m\il]{
+%   \mattopsw
+% };
+% }
+% }
+
+
+% \node[below = 0.1 mm of m\colcount,font=\bfseries] (n1) {1D Conv};
+
+% \draw[arrow,latex-latex,] ([yshift=\distx cm]m1-1-1.west) -- node[above,align=center]{Features} ([yshift=\distx cm]m1-1-\rowcount.east);
+
+% \draw[arrow,latex-latex,] ([xshift=-\disty cm]m\colcount-1-1.north west) -- node[above,sloped,align=center]{Time} ([xshift=-\disty cm]m1-1-1.north west);
+
+
+
+\end{tikzpicture}}%\hspace{0.8 cm}
+\subfloat[2D Convolution]{\begin{tikzpicture}[line width = 1.1pt,
+    2d-arr/.style={matrix of nodes,ampersand replacement=\&, nodes={draw,fill=white,minimum size=\nodesize,outer sep=0pt,align=center,font=\scriptsize}, row sep=-\pgflinewidth, column sep=-\pgflinewidth,nodes in empty cells,rounded corners=2.5},
+    arrow/.style={line width =2pt},scale=\convscale,every node/.style={scale=\convscale}]
+
+
+\def\stagy{-0.58*\convscale * \rowcount}
+\def\stagx{-0.58*\convscale * \colcount}
+
+\foreach \i [remember = \i as \il] in {1,...,\rowcount}{
+\pgfmathtruncatemacro{\help}{\rowcount-\i-1}
+
+\let\matrest\empty
+\foreach \row in {1,...,\rowcount}{%%
+\foreach \col in {1,...,\colcount}{%
+\pgfmathtruncatemacro{\xx}{\row+\help}
+\pgfmathtruncatemacro{\cyclecounter}{mod(\xx, \rowcount) + 1}
+
+\pgfmathparse{Mod(\i,2)==0?1:0}
+\ifthenelse{\pgfmathresult=0}{\pgfmathparse{mod(\row, 2) == 0 ? "black" : "\sepcolor"}}{\pgfmathparse{mod(\row, 2) == 0 ? "\sepcolor" : "black"}}
+\edef\color{\pgfmathresult}
+
+\xappto\matrest{\noexpand\node[draw=\color](m\i-\row-\col){\cyclecounter \noexpand\textsubscript{t\col}}; \noexpand\ifthenelse{\col=\colcount}{}{\&}}
+}%
+\gappto\matrest{\\}
+}%%
+
+\ifthenelse{\i=1}{\matrix (m1) [2d-arr]{
+\matrest 
+};}{
+\matrix (m\i) [2d-arr,below left =\stagy cm and \stagx cm of m\il]{
+  \matrest
+};
+}
+}
+
+\node[below = 0.1 mm of m\rowcount,font=\bfseries] (n1) {2D Conv};
+
+\node[below right = 0.1 mm and 2 mm of m\rowcount] (chan) {Channels};
+
+
+\draw[arrow,latex-latex,] ([yshift=\distx cm]m1-1-1.west) -- node[above,align=center]{Time} ([yshift=\distx cm]m1-1-\colcount.east);
+
+\draw[arrow,latex-latex,] ([xshift=-\disty cm]m\rowcount-1-1.north west) -- node[above,sloped,align=center]{Features} ([xshift=-\disty cm]m1-1-1.north west);
+
+\draw[arrow,latex-latex,] ([xshift=-\distx cm]m\rowcount-\rowcount-1.south) -- node[above,sloped,align=center]{Features} ([xshift=-\distx cm]m\rowcount-1-1.north);
+
+\foreach \i in {1,...,\rowcount}{
+    \draw[] (chan.north) -- (m\i-\rowcount-\colcount.south east);
+}
+\end{tikzpicture}}
+
+    \caption{1D and 2D convolution layers for time-series analysis.} % with Feature count of \rowcount~and time dimension of \colcount.}
+    \label{fig:conv-options}
+\end{figure}

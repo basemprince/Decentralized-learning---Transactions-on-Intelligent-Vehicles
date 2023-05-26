@@ -1,0 +1,81 @@
+\def\layerfigwidth{0.8}
+\def\layerfigheight{0.25}
+\def\ydist{-3.7}
+\begin{figure} [t]
+    \centering
+\begin{tikzpicture}[scale = 0.61]
+\begin{axis} [every axis plot post/.append style={mark=none,smooth,-,line width = \plotlinewidth pt},
+ylabel={Most Forgiving},
+axis x line=bottom,
+axis y line=left,
+axis line style={-,line width = 1pt},
+% ticks=none,
+width=\layerfigwidth\textwidth,
+height=\layerfigheight\textwidth,
+xmax = 1000,
+ymax=1.005
+] 
+    \addplot[fone] table [col sep=comma,header=true,x index=0,y index=1] {Data/most_forgiving.csv};
+    \addplot[ftwo] table [col sep=comma,header=true,x index=0,y index=2] {Data/most_forgiving.csv};
+    \addplot[fthree] table [col sep=comma,header=true,x index=0,y index=3] {Data/most_forgiving.csv};
+    \addplot[ffour] table [col sep=comma,header=true,x index=0,y index=4] {Data/most_forgiving.csv};
+    \addplot[ffive] table [col sep=comma,header=true,x index=0,y index=5] {Data/most_forgiving.csv};  
+    \addplot[fsix] table [col sep=comma,header=true,x index=0,y index=6] {Data/most_forgiving.csv};
+    \addplot[fseven] table [col sep=comma,header=true,x index=0,y index=7] {Data/most_forgiving.csv};
+    \addplot[feight] table [col sep=comma,header=true,x index=0,y index=8] {Data/most_forgiving.csv};
+\end{axis}
+
+
+\begin{axis} [at={(0,\ydist cm)},every axis plot post/.append style={mark=none,smooth,-,line width = \plotlinewidth pt},
+% xlabel={Time Step [s]},
+ylabel={Weighted Average},
+axis x line=bottom,
+axis y line=left,
+axis line style={-,line width = 1pt},
+% ticks=none,
+width=\layerfigwidth\textwidth,
+height=\layerfigheight\textwidth,
+xmax = 1000,
+ymax=1.005
+]
+    \addplot[fone] table [col sep=comma,header=true,x index=0,y index=1] {Data/weighted_avg.csv};
+    \addplot[ftwo] table [col sep=comma,header=true,x index=0,y index=2] {Data/weighted_avg.csv};
+    \addplot[fthree] table [col sep=comma,header=true,x index=0,y index=3] {Data/weighted_avg.csv};
+    \addplot[ffour] table [col sep=comma,header=true,x index=0,y index=4] {Data/weighted_avg.csv};
+    \addplot[ffive] table [col sep=comma,header=true,x index=0,y index=5] {Data/weighted_avg.csv};  
+    \addplot[fsix] table [col sep=comma,header=true,x index=0,y index=6] {Data/weighted_avg.csv};
+    \addplot[fseven] table [col sep=comma,header=true,x index=0,y index=7] {Data/weighted_avg.csv};
+    \addplot[feight] table [col sep=comma,header=true,x index=0,y index=8] {Data/weighted_avg.csv};
+\end{axis}
+
+\begin{axis} [at={(0,\ydist*2 cm)},every axis plot post/.append style={mark=none,smooth,-,line width = \plotlinewidth pt},
+xlabel={Time Step [s]},
+ylabel={Least Forgiving},
+axis x line=bottom,
+axis y line=left,
+axis line style={-,line width = 1pt},
+% ticks=none,
+width=\layerfigwidth\textwidth,
+height=\layerfigheight\textwidth,
+xmax = 1000,
+ymax=1.005,
+legend columns=4,
+legend style={at={(0.5,-0.5)},anchor=north,font=\large}
+]
+    \addplot[fone] table [col sep=comma,header=true,x index=0,y index=1] {Data/least_forgiving_2.csv};
+    \addplot[ftwo] table [col sep=comma,header=true,x index=0,y index=2] {Data/least_forgiving_2.csv};
+    \addplot[fthree] table [col sep=comma,header=true,x index=0,y index=3] {Data/least_forgiving_2.csv};
+    \addplot[ffour] table [col sep=comma,header=true,x index=0,y index=4] {Data/least_forgiving_2.csv};
+    \addplot[ffive] table [col sep=comma,header=true,x index=0,y index=5] {Data/least_forgiving_2.csv};  
+    \addplot[fsix] table [col sep=comma,header=true,x index=0,y index=6] {Data/least_forgiving_2.csv};
+    \addplot[fseven] table [col sep=comma,header=true,x index=0,y index=7] {Data/least_forgiving_2.csv};
+    \addplot[feight] table [col sep=comma,header=true,x index=0,y index=8] {Data/least_forgiving_2.csv};
+    \legend{Feature \#1,Feature \#2,Feature \#3,Feature \#4,Feature \#5,Feature \#6,Feature \#7,Feature \#8}
+\end{axis}
+
+\end{tikzpicture}
+\caption{The output of our decentralized GAN for non-IID APS data.}
+\label{fig:decentralized_results}
+\end{figure}
+
+

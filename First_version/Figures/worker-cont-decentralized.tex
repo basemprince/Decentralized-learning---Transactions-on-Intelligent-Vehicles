@@ -1,0 +1,55 @@
+\def\jumper{3}
+\def\increase{1.5}
+\begin{figure}[t]
+    \centering
+\begin{tikzpicture}[line width = 1pt,line cap=round, line join=round,anchor=center, font=\footnotesize]  
+\begin{axis}[
+    ybar, 
+    % bar width=20pt,
+    ylabel={Contribution},
+    xlabel={Training Strategy},
+    axis x line*=bottom,
+    axis y line=left,
+    xtick={1,1+\jumper,1+\jumper*2},
+    xticklabel style   = {align=center},
+    xticklabels={Most Forgiving, Weighted Avg, Least Forgiving},
+    axis line style={-,line width = 1pt},
+    width=0.5\textwidth,
+    height=0.28\textwidth,
+    xmin =  1-\increase,
+    xmax = \increase+1+\jumper*2,
+    scaled ticks=false,
+    ymin= 0,
+    ymax = 100000,
+    ytick=\empty,
+    legend cell align={left},
+    % legend style={at={(0.6,1)},anchor=north},
+    ]
+
+
+\addplot [fill=myblue ,line width = 1pt] coordinates{
+   (1,71000)
+   (1+\jumper,35000)
+   (1+\jumper*2,32000)};
+\addplot [fill=orange ,line width = 1pt] coordinates{
+   (1,67000)  
+   (1+\jumper,35000)
+   (1+\jumper*2,41000)};
+
+\addplot [fill=Emerald ,line width = 1pt] coordinates{
+   (1,2300)
+   (1+\jumper,35000)
+   (1+\jumper*2,33000)};
+\addplot [fill=myred ,line width = 1pt] coordinates{
+   (1,800)
+   (1+\jumper,35000)
+   (1+\jumper*2,34000)};
+
+   
+\legend{Worker \#1 [Anomalous],Worker \#2 [Anomalous],Worker \#3 [Normal],Worker \#4 [Normal] }
+   
+\end{axis}    
+\end{tikzpicture}
+    \caption{Worker contribution based on training strategy.}
+    \label{fig:work-cont-decentralized}
+\end{figure}

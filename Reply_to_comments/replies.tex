@@ -1,0 +1,219 @@
+\documentclass{article}
+
+%Added this for math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{epsfig}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert} %this makes it easier to use absolute bars (now /abs{})
+% ---------------------------------
+
+	\def\papertitle{Generating Synthetic Vehicle Data Using Decentralized Generative Adversarial Networks (T-IV-23-05-0965)}
+	\def\authors{B.~Shaker, G.~P.~Rosati~Papini, M.~Saveriano, and K.-Y.~Liang}
+	
+	\def\Editor{Dear Professor Fei-Yue Wang\\}
+	
+	\def\Letter{Enclosed please find the replies to the Editor's and Reviewers' comments with a detailed statement of changes made in order to address those comments. We also attached a PDF diff file that highlights the changes in the revised version of the paper with respect to the previous version, where the blue colour marks the added text and the red colour marks the removed text.
+	\\ \\
+	Best regards,\\
+	\\
+	G. P. Rosati Papini
+}
+
+
+
+
+
+
+\providecommand{\lettertitle}{Author Response to Reviews of}
+\providecommand{\papertitle}{Title}
+\providecommand{\authors}{Authors}
+\providecommand{\journal}{Journal}
+\providecommand{\doi}{--}
+\providecommand{\Editor}{Name}
+\providecommand{\Letter}{Body}
+
+\input{preamble.tex}
+
+\def\headall{
+{\Large\bf \lettertitle}\\[1em]
+{\Large \papertitle}\\[1em]
+{\authors}\\
+%{\it \journal, }\texttt{doi:\doi}\\
+\hrule
+
+% Legend
+\hfill {\bfseries RC:} \textbf{{Reviewer Comment}},\(\quad\) AR: \textcolor{blue}{Author Response}, \(\quad\textcolor{blue}{\square}\) \emph{\textcolor{blue}{Manuscript text}}}
+\begin{document}
+{\Large\bf \Editor}\\[1em]
+{\large\Letter}\\[1em]
+\newpage
+% Make title
+\headall
+
+
+
+
+
+
+
+
+
+
+
+\section{Editor}
+
+\RC I believe the topic of your paper is interesting and beneficial to TIV, therefore I would like to invite you to revise thoroughly according to our review reports, and resubmit your revision as a New paper. If you do so, please let me know before your submission and provide me with a detailed report on your revision, I will let you know my opinion.
+
+\AR We thank the Editor for appreciating our work and for guiding the revision. In the revised version, we have addressed all the comments from the reviewers. Please find the detailed answers below.
+
+%\RC comment
+
+%\AR Please refer to the individual reviewer replies for details.
+
+
+\newpage
+% Make title
+\headall
+
+\section{Reviewer \#1}
+
+\RC The writing quality of this paper is poor, there are many writing mistakes that can be seen throughout the paper. For instance, P2, L47, LSTM, The author should provide the full name when an abbreviation is first used.
+
+\AR TODO: 
+\begin{itemize}
+    \item Include all and every abbreviation into the glossary even if it is very obvious.
+    \item Use grammarly (or similar) on all paragraphs after finishing the editing. 
+\end{itemize}
+
+\begin{quote}
+	++++++++++++
+\end{quote}
+
+\RC The authors need to emphasise their contributions/novelties in introduction. In the current version, the authors provide too much unnecessary details or background information. Authors should give detailed references and lines of research development A well-written introduction should provide a clear and concise summary of the main points and contributions of the paper.
+
+\AR TODO: 
+\begin{itemize}
+    \item Rewrite the intro to really emphasize our contributions, which are as follows:
+    \begin{enumerate}
+        \item Our model can effectively learn from multiple non-IID time- series and converge to a solution that fools all discriminators. Experimental results show that our approach outperforms existing centralized methods, such as TimeGAN, for non- IID time-series in terms of the quality of the generated synthetic data  
+        \item We present a novel discriminator architecture, based on CNNs, that facilitates the generation of sequences with variable lengths. To accommodate sequences of diverse lengths, we incorporate an adaptive pooling layer within the discriminator. This enhancement augments the generator's capability to accurately reproduce sequences of varying lengths.
+        \item We propose a novel normalization technique to further enhance the training process. More in details, the server determines the global minimum and maximum values for each feature, considering the lowest minimum and the highest maximum values received from all the workers. These global boundaries are then sent back to all workers for normalization of their local data. We experimentally show that this approach outperforms the normalization based on the known range of the specific sensors involved.
+        \end{enumerate}
+    \item Complaining about unnecessary details might be due to including previous works into introduction. Suggest re-separating it into its own section.
+\end{itemize}
+
+\begin{quote}
+	++++++++++++
+\end{quote}
+
+\RC The authors are suggested to carefully rephrase the format of each cited reference in the manuscript to ensure a better writing quality. The author needs to unify all writing formats.
+
+\AR TODO: 
+\begin{itemize}
+    \item I think the complaint is for how we put the reference in the text and not the actual formatting of the references? unclear
+\end{itemize}
+
+\begin{quote}
+	++++++++++++
+\end{quote}
+
+\RC The images in the font size is too small. Fig. 1. makes it difficult for the reader to understand.
+
+\AR TODO: 
+\begin{itemize}
+    \item Redone Fig.1 specifically. made it page width, increased fontsize, changed color-coding, added more info in the caption.
+    \item Should we do the same for the rest of the figures?
+\end{itemize}
+
+\begin{quote}
+	++++++++++++
+\end{quote}
+
+\RC The authors claim that the generated features maintained the same correlations exhibited in the real data. They should prove this idea with more experiments and metrics. For instance, metric: FID, KID, IS, etc.
+
+\AR We appreciate the reviewer's comment. As our work primarily deals with time-series data, the metrics FID, KID, and IS, which are typically used for evaluating image data, are not applicable. In our manuscript, we presented an auto-regression model and have instead used R-squared (R2), Mean Absolute Error (MAE), and Root Mean Squared Error (RMSE) as part of our evaluation methodology to compare our generated time-series data with the real data. However, we have performed earlier tests with the GAN model on images before adapting it to time-series data, which were omitted from the manuscript as we wanted it to be very specific to vehicle sensor data. We have now reintroduced that into the manuscript.
+\\
+\\
+TODO: 
+\begin{itemize}
+    \item Re-introduce the image based results?
+\end{itemize}
+
+\begin{quote}
+	++++++++++++
+\end{quote}
+
+\RC In the experiment, the author should give more details including but not limited to: dataset, training strategy, training tricks, etc. The experimental setup of datasets is not clear.
+
+\AR TODO: 
+\begin{itemize}
+    \item These info are all within the original thesis report. We need to revisit adding those back and expanding on what we have in the publication. The question now is, how many pages will this add? what is our new page count target?
+\end{itemize}
+
+\begin{quote}
+	++++++++++++
+\end{quote}
+
+\RC In section IV, more ablation studies should be added to analyze the design of the Generative Adversarial networks and Federated Learning, such as the effects of different kinds of loss and training strategies?
+
+\AR TODO: 
+\begin{itemize}
+    \item Same as previous point. The original report, specifically in the image-based, had a section about (MSE vs BCE), (effect of batch size), (learning rate effect on weighted average most/least forgiving).
+    \item Which ones to include? this is a lot of information. Suggest MSE vs BCE and batch size?
+\end{itemize}
+
+\begin{quote}
+	++++++++++++
+\end{quote}
+
+
+\newpage
+\headall
+
+\section{Reviewer \#2}
+
+\RC The novelty of this paper is limited. Both the network architecture and the deployment of the federated learning approach are commonly used in related works. The contribution of the paper should be strengthened and highlighted.
+
+\AR TODO: 
+\begin{itemize}
+    \item Don't know how to address the concern about limited novelty. Would re-writing the introduction be sufficient?
+\end{itemize}
+
+\begin{quote}
+	++++++++++++
+\end{quote}
+
+\RC Comparison with related FL-based GANs is lacking, which makes it hard to assess the superiority of the proposed method.
+
+\AR TODO: 
+\begin{itemize}
+    \item Unsure how to tackle this concern. Currently, there are no time-series based Decentralized GANs on the market to compare it to. This was an image-based that was adapted based on an earlier decision taken at the beginning of the thesis.
+    \item We included the most similar in the results, which was TimeGAN, but its not decentralized.
+\end{itemize}
+
+\begin{figure}[htp]
+    \centering
+\includegraphics[scale=0.55]{Reply_to_comments/implementations.png}
+\end{figure}
+
+\begin{quote}
+	++++++++++++
+\end{quote}
+
+\RC A brief survey of related works on federated learning and GANs should be added. Besides, the usage of FL-based GANs in intelligent vehicles should be also be introduced and summarized.
+
+\AR TODO: 
+\begin{itemize}
+    \item We included F2U, F2A, FeGANs, EFFGAN. I guess we need to include more? I can add FeTGAN, which is based on TimeGAN.
+    \item In terms of FL-based GANs in intelligent vehicles. I cannot find something that directly translates to our application. The intersection of Federated Learning, GANs, and intelligent vehicles is highly specific. The most closest thing i found was this, but its image based and not decentralized: \href{https://openaccess.thecvf.com/content/WACV2021W/AVV/papers/Xu_Reliability_of_GAN_Generated_Data_to_Train_and_Validate_Perception_WACVW_2021_paper.pdf}{\textbf{[LINK]}}
+\end{itemize}
+
+\begin{quote}
+	++++++++++++
+\end{quote}
+
+
+
+\end{document}

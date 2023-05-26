@@ -1,0 +1,51 @@
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{external,shapes, arrows, arrows.meta, positioning,backgrounds,shapes.geometric,matrix,bending,decorations.pathreplacing,calligraphy,chains,calc,fit,fadings} 
+
+\tikzset{-latex,auto,
+weird fill/.style={append after command={
+   \pgfextra
+        \draw[sharp corners,draw=none, fill=#1]% 
+    (\tikzlastnode.west)% 
+    [rounded corners=4pt] |- (\tikzlastnode.north)% 
+    [rounded corners=0pt] -| (\tikzlastnode.east)% 
+    [rounded corners=0pt] |- (\tikzlastnode.south)% 
+    [rounded corners=4pt] -| (\tikzlastnode.west);
+   \endpgfextra}},
+pics/layerbox/.style n args = {5}{
+    code = {
+    \node[weird fill=#1,text width=2.4cm,text=white,minimum height = 1.0 cm,align=center] (A) at (0,0) {#2};  
+    \node[anchor=south west,text width=1.0cm] (B) at (A.east) {Input:};
+    \node[anchor=north west,text width=1.0cm] (C) at (A.east){Output:};
+    \node[anchor=west,text width=2.3cm,align=center] (D) at (B.east){#3};
+    \node[anchor=west,text width=2.3cm,align=center] (E) at (C.east){#4};
+    \node[inner sep=0pt,scale = #5,draw,rounded corners,fit=(A)(B)(C)(D)(E)] {}; 
+    \draw[-] (B.north west) -- (C.south west)
+          (B.north east) -- (C.south east)
+          (B.south west) -- (E.north east);    
+    }
+},
+} 
+
+\colorlet{myred}{gray!60!red}
+\colorlet{myblue}{gray!60!blue}
+\colorlet{bluelight}{gray!60!blue!30}
+\colorlet{mygreen}{gray!40!green!60}
+\colorlet{myellow}{white!50!yellow}
+\colorlet{servcol}{ForestGreen!30}
+\colorlet{workcol}{BurntOrange!30}
+\colorlet{fakecol}{gray!30!red!10}
+\colorlet{tablecolone}{gray!40!OrangeRed!60}
+\colorlet{tablecoltwo}{gray!30!OrangeRed!20}
+\colorlet{tablecolfour}{gray!60!ForestGreen!20}
+\colorlet{tablecolfive}{gray!60!ForestGreen!50}
+
+\colorlet{fone}{Emerald}
+\colorlet{ftwo}{myred}
+\colorlet{fthree}{green}
+\colorlet{ffour}{pink}
+\colorlet{ffive}{orange}
+\colorlet{fsix}{cyan}
+\colorlet{fseven}{myblue}
+\colorlet{feight}{black}

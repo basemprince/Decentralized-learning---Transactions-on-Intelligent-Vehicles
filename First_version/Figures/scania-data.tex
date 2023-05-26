@@ -1,0 +1,80 @@
+\def\layerfigwidth{0.8}
+\def\layerfigheight{0.25}
+\def\ydist{-3.7}
+\def\plotlinewidth{1}
+\begin{figure} [t]
+    \centering
+\begin{tikzpicture}[scale = 0.61]
+\begin{axis} [every axis plot post/.append style={
+  mark=none,smooth,-,line width = \plotlinewidth pt},
+ylabel={Anomalous Data},
+axis x line=bottom,
+axis y line=left,
+axis line style={-,line width = 1pt},
+% ticks=none,
+width=\layerfigwidth\textwidth,
+height=\layerfigheight\textwidth,
+xmax = 1000,
+ymax=1.005
+] 
+    \addplot[fone] table [col sep=comma,header=true,x index=0,y index=1] {Data/anamolus.csv};
+    \addplot[ftwo] table [col sep=comma,header=true,x index=0,y index=2] {Data/anamolus.csv};
+    \addplot[fthree] table [col sep=comma,header=true,x index=0,y index=3] {Data/anamolus.csv};
+    \addplot[ffour] table [col sep=comma,header=true,x index=0,y index=4] {Data/anamolus.csv};
+    \addplot[ffive] table [col sep=comma,header=true,x index=0,y index=5] {Data/anamolus.csv};  
+    \addplot[fsix] table [col sep=comma,header=true,x index=0,y index=6] {Data/anamolus.csv};
+    \addplot[fseven] table [col sep=comma,header=true,x index=0,y index=7] {Data/anamolus.csv};
+    \addplot[feight] table [col sep=comma,header=true,x index=0,y index=8] {Data/anamolus.csv};
+\end{axis}
+
+\begin{axis} [at={(0,\ydist cm)},every axis plot post/.append style={mark=none,smooth,-,line width = \plotlinewidth pt},
+% xlabel={Time Step [s]},
+ylabel={Normal Data},
+axis x line=bottom,
+axis y line=left,
+axis line style={-,line width = 1pt},
+% ticks=none,
+width=\layerfigwidth\textwidth,
+height=\layerfigheight\textwidth,
+xmax = 1000,
+ymax=1.005
+]
+    \addplot[fone] table [col sep=comma,header=true,x index=0,y index=1] {Data/normal.csv};
+    \addplot[ftwo] table [col sep=comma,header=true,x index=0,y index=2] {Data/normal.csv};
+    \addplot[fthree] table [col sep=comma,header=true,x index=0,y index=3] {Data/normal.csv};
+    \addplot[ffour] table [col sep=comma,header=true,x index=0,y index=4] {Data/normal.csv};
+    \addplot[ffive] table [col sep=comma,header=true,x index=0,y index=5] {Data/normal.csv};  
+    \addplot[fsix] table [col sep=comma,header=true,x index=0,y index=6] {Data/normal.csv};
+    \addplot[fseven] table [col sep=comma,header=true,x index=0,y index=7] {Data/normal.csv};
+    \addplot[feight] table [col sep=comma,header=true,x index=0,y index=8] {Data/normal.csv};
+\end{axis}
+
+\begin{axis} [at={(0,\ydist*2 cm)},every axis plot post/.append style={mark=none,smooth,-,line width = \plotlinewidth pt},
+xlabel={Time Step [s]},
+ylabel={Mixed Data},
+axis x line=bottom,
+axis y line=left,
+axis line style={-,line width = 1pt},
+% ticks=none,
+width=\layerfigwidth\textwidth,
+height=\layerfigheight\textwidth,
+xmax = 1000,
+ymax=1.005,
+legend columns=4,
+legend style={at={(0.5,-0.5)},anchor=north,font=\large}
+]
+    \addplot[fone] table [col sep=comma,header=true,x index=0,y index=1] {Data/mix-data.csv};
+    \addplot[ftwo] table [col sep=comma,header=true,x index=0,y index=2] {Data/mix-data.csv};
+    \addplot[fthree] table [col sep=comma,header=true,x index=0,y index=3] {Data/mix-data.csv};
+    \addplot[ffour] table [col sep=comma,header=true,x index=0,y index=4] {Data/mix-data.csv};
+    \addplot[ffive] table [col sep=comma,header=true,x index=0,y index=5] {Data/mix-data.csv};  
+    \addplot[fsix] table [col sep=comma,header=true,x index=0,y index=6] {Data/mix-data.csv};
+    \addplot[fseven] table [col sep=comma,header=true,x index=0,y index=7] {Data/mix-data.csv};
+    \addplot[feight] table [col sep=comma,header=true,x index=0,y index=8] {Data/mix-data.csv};
+    \legend{Feature \#1,Feature \#2,Feature \#3,Feature \#4,Feature \#5,Feature \#6,Feature \#7,Feature \#8}
+\end{axis}
+
+\end{tikzpicture}
+\caption{The real APS time-series data (anomalous vs. normal vs. mixed).}
+\label{fig:scania-data}
+\end{figure}

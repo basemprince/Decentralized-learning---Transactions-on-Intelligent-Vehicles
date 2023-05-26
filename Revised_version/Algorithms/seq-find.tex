@@ -1,0 +1,24 @@
+\begin{algorithm}[t]
+%\scriptsize
+\caption{Sequence Length Finder}
+\label{alg:seq-find}
+\textbf{ Input:} kernels $k$, paddings $p$, strides $s$, target\_width $w_t$ 
+\begin{algorithmic}[1]
+%\Procedure{seq\_length\_finder}{}
+%\Function{seq\_length\_finder}{ $p$, $s$, $w$}
+%\Input{kernels, paddings, strides, target\_width}
+    \State $o_s$ $\gets$ $w_t$ \Comment{Output size}
+    \For{$i$ $\gets$ \texttt{len}($k$) to $0$} %\Comment{go backwards to find noise size}
+        \State $i_s$ $\gets$ ($o_s - k_i+2p_i)/(s_i+1)$ \Comment{Input size}
+        \State $o_s$ $\gets$ $i_s$
+    \EndFor
+    \State $n_s$ $\gets$ \texttt{ceil}($o_s$) \Comment{Noise size}
+    \State $i_s$ $\gets$ $n_s$
+    \For{$i$ $\gets$ 0 to \texttt{len}($k$)} %\Comment{go forward to find output size}
+        \State $o_s$ $\gets$ $(i_s-1)s_i + k_i - 2p_i$
+        \State $i_s$ $\gets$ $o_s$
+    \EndFor
+    \State \Return $n_s$, $o_s$
+%\EndProcedure
+\end{algorithmic}
+\end{algorithm}
