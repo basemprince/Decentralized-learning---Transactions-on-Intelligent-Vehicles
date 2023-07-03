@@ -1,17 +1,18 @@
-\def\nodesize{21}
+\def\nodesize{20}
 \def\sepcolor{myblue}
-\def\convscale{0.85}
+\def\convscale{0.8}
 
 \def\rowcount{4}  % feature count
-\def\colcount{4}  % time width
+\def\colcount{3}  % time width
 
-\def\separation{3.5 * \convscale}
+\def\separation{3 * \convscale}
 
 \def\distx{0.89*\convscale}
 \def\disty{0.5*\convscale}
 
-\begin{figure*}[t]
+\begin{figure}[t]
     \centering
+    \fcolorbox{blue}{white}{
 \subfloat[1D Convolution options]{    
 \begin{tikzpicture}[line width = 1.1pt,
     2d-arr/.style={matrix of nodes,ampersand replacement=\&, nodes={draw,fill=white,minimum size=\nodesize,outer sep=0pt,align=center,font=\bfseries}, row sep=-\pgflinewidth, column sep=-\pgflinewidth,nodes in empty cells,rounded corners=2.5},
@@ -106,14 +107,14 @@
 
 
 \end{tikzpicture}}
-\hspace{1.2 cm}
+\hspace{0.6 cm}
 \subfloat[2D Convolution]{\begin{tikzpicture}[line width = 1.1pt,
     2d-arr/.style={matrix of nodes,ampersand replacement=\&, nodes={draw,fill=white,minimum size=\nodesize,outer sep=0pt,align=center,font=\bfseries}, row sep=-\pgflinewidth, column sep=-\pgflinewidth,nodes in empty cells,rounded corners=2.5},
     arrow/.style={line width =2pt},scale=\convscale,every node/.style={scale=\convscale}]
 
 
-\def\stagy{-0.7*\convscale * \rowcount}
-\def\stagx{-0.7*\convscale * \colcount}
+\def\stagy{-0.66*\convscale * \rowcount}
+\def\stagx{-0.63*\convscale * \colcount}
 
 \foreach \i [remember = \i as \il] in {1,...,\rowcount}{
 \pgfmathtruncatemacro{\help}{\rowcount-\i-1}
@@ -161,11 +162,11 @@
 \foreach \i in {1,...,\rowcount}{
     \draw[] (chan.north) -- (m\i-\rowcount-\colcount.south east);
 }
-\end{tikzpicture}}
+\end{tikzpicture}}}
 
-    \caption{Depiction of 1D and 2D convolution layers for time-series analysis with feature count of \rowcount~and time dimension of \colcount. Cell entries are denoted as X\textsubscript{ty}, where X represents the feature number and y denotes the time step. Alternating features are color-coded for enhanced visibility.}
+    \caption{\textcolor{blue}{Depiction of 1D and 2D convolution layers for time-series analysis with feature count of \rowcount~and time dimension of \colcount. Cell entries are denoted as X\textsubscript{ty}, where X represents the feature number and y denotes the time step. Alternating features are color-coded for enhanced visibility.}}
     \label{fig:conv-options}
-\end{figure*}
+\end{figure}
 
 
 

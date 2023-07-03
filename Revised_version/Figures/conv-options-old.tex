@@ -1,6 +1,6 @@
 \def\nodesize{17}
 \def\sepcolor{orange}
-\def\convscale{0.75}
+\def\convscale{0.65}
 
 \def\rowcount{5}  % feature count
 \def\colcount{6}  % time width
@@ -12,6 +12,7 @@
 
 \begin{figure}[t]
     \centering
+    \fcolorbox{red}{white}{
 \subfloat[1D Convolution options]{    
 \begin{tikzpicture}[line width = 1.1pt,
     2d-arr/.style={matrix of nodes,ampersand replacement=\&, nodes={draw,fill=white,minimum size=\nodesize,outer sep=0pt,align=center,font=\scriptsize}, row sep=-\pgflinewidth, column sep=-\pgflinewidth,nodes in empty cells,rounded corners=2.5},
@@ -143,8 +144,8 @@
 \foreach \i in {1,...,\rowcount}{
     \draw[] (chan.north) -- (m\i-\rowcount-\colcount.south east);
 }
-\end{tikzpicture}}
+\end{tikzpicture}}}
 
-    \caption{1D and 2D convolution layers for time-series analysis.} % with Feature count of \rowcount~and time dimension of \colcount.}
-    \label{fig:conv-options}
+    \caption{\textcolor{red}{1D and 2D convolution layers for time-series analysis.}} % with Feature count of \rowcount~and time dimension of \colcount.}
+    \label{fig:conv-options-old}
 \end{figure}

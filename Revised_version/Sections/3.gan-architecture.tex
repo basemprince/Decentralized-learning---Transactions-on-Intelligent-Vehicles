@@ -12,8 +12,9 @@ In the rest of this section, we show how to adapt \gls*{f2u} to learn from time-
 The first step to adapt the architecture for time-series data is to set up the convolutional layers. This can be done using one of the following structures (see Fig.~\ref{fig:conv-options}):
 %
 \begin{enumerate}
-    \item 1D convolution and transpose convolution, with each channel of the 1D convolution layers representing a specific feature and the width dimension representing the time domain. With $M$ features and a time window of $T$ seconds, a convolution layer would have $M$ channels and a 1D convolution width of $T$.
+    \item \textcolor{red}{1D convolution and transpose convolution, with each channel of the 1D convolution layers representing a specific feature and the width dimension representing the time domain. With $M$ features and a time window of $T$ seconds, a convolution layer would have $M$ channels and a 1D convolution width of $T$.}
 %    \item[2)] 1D convolution and transpose convolution, with each channel in the time domain and the width representing a separate feature. With $M$ features and a time window of $T$ seconds, a convolution layer would have $T$ channels and a 1D convolution width of $M$.
+    \item \textcolor{blue}{1D convolution and transpose convolution can be organized in two ways: First, each channel can represent a specific feature, with the width dimension symbolizing the time domain, resulting in $M$ channels and a 1D convolution width of $T$ seconds. Alternatively, each channel can exist in the time domain, with the width representing a different feature, leading to $T$ channels and a 1D convolution width of $M$ features.}
     \item 2D convolution and transpose convolution, with the width axis in time domain and the height axis in feature domain. Each channel would be a copy of the previous one, except the first row is moved to the bottom.
 \end{enumerate}
 %
@@ -24,7 +25,9 @@ While the use of 2D convolution with feature mirroring might improve the network
 We switched both the generator and discriminator to 1D convolution as previously mentioned and further modified the sizes of the kernel, stride, and output channels to fit the feature count and sequence width of the time-series data. 
 % \atB{How we modify these}
 
+\input{Figures/conv-options-old.tex}
 \input{Figures/conv-options.tex}
+
 
 \subsection{Time-series Based Neural Network Architecture}
 %Some notes on the "Image Based Neural Network Architecture".

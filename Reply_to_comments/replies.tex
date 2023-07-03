@@ -133,7 +133,7 @@
 
 \RC The authors claim that the generated features maintained the same correlations exhibited in the real data. They should prove this idea with more experiments and metrics. For instance, metric: FID, KID, IS, etc.
 
-\AR We appreciate the reviewer's comment. As our work primarily deals with time-series data, the metrics FID, KID, and IS, which are typically used for evaluating image data, are not applicable. In our manuscript, we presented an auto-regression model and have instead used R-squared (R2), Mean Absolute Error (MAE), and Root Mean Squared Error (RMSE) as part of our evaluation methodology to compare our generated time-series data with the real data. However, we have performed earlier tests with the GAN model on images before adapting it to time-series data, which were omitted from the manuscript as we wanted it to be very specific to vehicle sensor data. We have now reintroduced that into the manuscript.
+\AR We appreciate the reviewer's comment. FID, KID, and IS are generally used for evaluating the quality and diversity of images produced by GANs. They rely on using a pretrained model, like Inception v3, which was trained on images, to extract features from the generated and real data. Therefore, these metrics aren't directly applicable to time series data. In our manuscript, we presented an auto-regression model and have instead used R-squared (R2), Mean Absolute Error (MAE), and Root Mean Squared Error (RMSE) as part of our evaluation methodology to compare our generated time-series data with the real data. However, we have performed earlier tests with the GAN model on images before adapting it to time-series data, which were omitted from the manuscript as we wanted it to be very specific to vehicle sensor data.
 \\
 \\
 TODO: 
@@ -162,6 +162,7 @@ TODO:
 \begin{itemize}
     \item Same as previous point. The original report, specifically in the image-based, had a section about (MSE vs BCE), (effect of batch size), (learning rate effect on weighted average most/least forgiving).
     \item Which ones to include? this is a lot of information. Suggest MSE vs BCE and batch size?
+    \item add more details in the response, then add a small info in the report
 \end{itemize}
 
 \begin{quote}
@@ -192,11 +193,6 @@ TODO:
     \item Unsure how to tackle this concern. Currently, there are no time-series based Decentralized GANs on the market to compare it to. This was an image-based that was adapted based on an earlier decision taken at the beginning of the thesis.
     \item We included the most similar in the results, which was TimeGAN, but its not decentralized.
 \end{itemize}
-
-\begin{figure}[htp]
-    \centering
-\includegraphics[scale=0.55]{Reply_to_comments/implementations.png}
-\end{figure}
 
 \begin{quote}
 	++++++++++++
