@@ -33,21 +33,21 @@ Figure~\ref{fig:scania-data} shows three runs performed under the same road cond
 To improve the training, data are usually normalized using, e.g., Min-Max normalization. In our case, each feature can be normalized based on the known (constant) capabilities of that specific sensor. %These boundaries are constant and known for any vehicle having the same sensors. 
 However, in practice, the span between the minimum and maximum values for each feature is much larger than the normal operating values and my not represent the real distribution.
 %
-To improve on the normalization technique, we implemented a slightly different approach. \textcolor{blue}{(see Fig.~\ref{fig:normalize}). }
+To improve on the normalization technique, we implemented a slightly different approach. \textcolor{blue}{(see Fig.~\ref{fig:normalize}).}
 At the beginning of the communication, all workers would send their minimum and maximum values for each feature in their local data-set to the server. The server decides on minimum and maximum values based on the lowest minimum value and the highest maximum value among all the workers for each feature. The server sends the decided min and max values to all workers to be used to normalize their local data. Note that the output from the generator will have data that is normalized based on the worker limits. That means there need be an extra step to un-normalize the data to switch it back to either normalized data based on the known capabilities of the features, or to real values.
 \newcommand\normscale{0.6}
 \input{Figures/normalize.tex}
 
 \subsection{Decentralized Training Sequence}
 %
-The full training sequence of the decentralized time-series \gls*{gan} model involves the following steps:
+\textcolor{blue}{In the decentralized training sequence of our time-series \gls*{gan} model, we employ the Adam optimizer with a learning rate of 2e-4, and parameters $\beta1$ = 0.5, $\beta2$ = 0.999 for both generator and discriminator. We found that \gls*{mse} loss outperformed \gls*{bce}, especially in a decentralized setting. The noise dimension for the generator was set to 128 and the batch size used was 4. Our testing showed that in our decentralized training setup, overriding the models with the winning discriminator led to a degradation in performance. Therefore, the chosen worker does not override the other workers.} The full training sequence of the decentralized time-series \gls*{gan} model involves the following steps:
 %
 \begin{itemize}
 \item For each epoch, a target sequence width is determined in order to calculate the necessary noise size and actual sequence width output from the generator.
 \item Random noise is generated and used to create fake sequences, which are then sent to all workers.
 \item Workers create samples from their local real data that match the sequence width of the fake data received.
 \item During each iteration, workers feed their discriminator a real sample with a target of one, and then feed it a fake sample with a target of zero.
-\item Loss is calculated for both the real and fake data using MSE loss. The overall loss for each discriminator is the average of both losses.
+\item Loss is calculated for both the real and fake data using \gls*{mse} loss. The overall loss for each discriminator is the average of both losses.
 \item The overall loss is back-propagated to improve each discriminator using Adam optimizer~\cite{adam_optimizer}.
 \item The fake losses for all workers are compared, and based on the training strategy either:
 \begin{itemize}

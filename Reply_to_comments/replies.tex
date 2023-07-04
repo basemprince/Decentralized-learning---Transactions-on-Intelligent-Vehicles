@@ -158,12 +158,21 @@ TODO:
 
 \RC In section IV, more ablation studies should be added to analyze the design of the Generative Adversarial networks and Federated Learning, such as the effects of different kinds of loss and training strategies?
 
-\AR TODO: 
-\begin{itemize}
-    \item Same as previous point. The original report, specifically in the image-based, had a section about (MSE vs BCE), (effect of batch size), (learning rate effect on weighted average most/least forgiving).
-    \item Which ones to include? this is a lot of information. Suggest MSE vs BCE and batch size?
-    \item add more details in the response, then add a small info in the report
+\AR \begin{itemize}
+\item We conducted a series of ablation studies specifically for image-based GANs before adapting it to time-series data. These studies were not applied to time-series GANs as it was already proved by the image-based GANs studies.
+\item We analyzed the effects of different loss functions, particularly MSE and BCE. In a centralized setup, there were no major difference between the performance of BCE and MSE loss, however, MSE performed significantly better than BCE. 
+\item We also examined the impact of batch size on the performance of the GANs. The network was able to learn much faster using a smaller batch size
+of 16 compared to 64. Both the image output and the FID score confirm that the output improved with a
+smaller size batch given a larger number of workers and limited local data.
+\item Furthermore, we studied the effect of the learning rate on the weighted average of the most and least forgiving strategies. We experimented with different learning rates for the discriminator and generator, specifically increasing the discriminator learning rate to 0.002. Additionally, we adjusted the discriminator-generator training ratio to 3:1. Despite these modifications, the changes resulted in image output degradation.
 \end{itemize}
+%
+% TODO: 
+% \begin{itemize}
+%     \item Same as previous point. The original report, specifically in the image-based, had a section about (MSE vs BCE), (effect of batch size), (learning rate effect on weighted average most/least forgiving).
+%     \item Which ones to include? this is a lot of information. Suggest MSE vs BCE and batch size?
+%     \item add more details in the response, then add a small info in the report
+% \end{itemize}
 
 \begin{quote}
 	++++++++++++
