@@ -113,8 +113,8 @@
     arrow/.style={line width =2pt},scale=\convscale,every node/.style={scale=\convscale}]
 
 
-\def\stagy{-0.66*\convscale * \rowcount}
-\def\stagx{-0.63*\convscale * \colcount}
+\def\stagy{-0.68*\convscale * \rowcount}
+\def\stagx{-0.65*\convscale * \colcount}
 
 \foreach \i [remember = \i as \il] in {1,...,\rowcount}{
 \pgfmathtruncatemacro{\help}{\rowcount-\i-1}
@@ -163,7 +163,7 @@
     \draw[] (chan.north) -- (m\i-\rowcount-\colcount.south east);
 }
 \end{tikzpicture}}}
-
+    \textcolor{blue}{\marginnote{AR14}}
     \caption{\textcolor{blue}{Depiction of 1D and 2D convolution layers for time-series analysis with feature count of \rowcount~and time dimension of \colcount. Cell entries are denoted as X\textsubscript{ty}, where X represents the feature number and y denotes the time step. Alternating features are color-coded for enhanced visibility.}}
     \label{fig:conv-options}
 \end{figure}

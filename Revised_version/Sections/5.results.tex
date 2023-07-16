@@ -3,16 +3,14 @@
 
 
 %The testing process began with a single worker (centralized \gls*{gan}) in order to determine the optimal layer architecture for the generator and discriminator. We initially conducted the testing using anomalous data, and then normal data was introduced later on.
-We compared the performance of a centralized \gls*{gan} (i.e., a single worker) with our decentralized approach. For evaluation, we trained 3 separate auto-regression models for each data behaviour (normal, anomalous, mixed). Each \gls*{trtr} model is needed to calculate the corresponding \gls*{trts} for the \gls*{gan} getting tested. The auto-regression models are set-up to predict the last five time steps.
+\textcolor{blue}{We compared the performance of a centralized \gls*{gan} (i.e., a single worker) with our decentralized approach. For evaluation, we trained 3 separate auto-regression models for each data behaviour (normal, anomalous, mixed). Each \gls*{trtr} model is needed to calculate the corresponding \gls*{trts} for the \gls*{gan} getting tested. The auto-regression models are set-up to predict the last five time steps.
 %
-As depicted in Tab.~\ref{tab:trtr-main}, the regression model demonstrates a higher R2 score when evaluated on the normal behaviour data-set. This indicates that the model exhibits higher accuracy when handling normal data, as compared to anomalous or mixed data. We use the \gls*{trtr} metric to verify the results when applied to synthetic data. In particular, we tested each \gls*{trtr} on 10 different synthetic data samples from each generator to calculate an average for the \gls*{trts} metric. Similarly, we trained an auto-regression model with synthetic data 10 different times to calculate an average for the \gls*{tstr} metric.
-
-\input{Tables/trtr}
+We use the \gls*{trtr} metric (Tab.~\ref{tab:trtr-main}) to verify the results when applied to synthetic data. In particular, we tested each \gls*{trtr} on 10 different synthetic data samples from each generator to calculate an average for the \gls*{trts} metric. Similarly, we trained an auto-regression model with synthetic data 10 different times to calculate an average for the \gls*{tstr} metric.}
 
 
 \subsection{Centralized GAN Results}
 
-We tested the model initially using fixed sequence widths of 64, 128, and 256 seconds. The results show a sequence width of 64 seconds being the better performer if we used the fixed sequence strategy width. After applying the dynamic window strategy, both visual inspection and the \gls*{trts} / \gls*{tstr} (see Tab.~\ref{tab:dynamic-window}) showed an improvement. This confirms that the dynamic window in fact improves the capabilities of the generator in contrast to using a fixed sequence width. \textcolor{blue}{Our dynamic window strategy, confirmed superior via visual inspection, notably outperformed the comparable yet non-decentralized TimeGAN model in both \gls*{trts} and \gls*{tstr} metrics (see Tab.~\ref{tab:dynamic-window}). This result reinforces the advantage of our method over related existing models.}
+We tested the model initially using fixed sequence widths of 64, 128, and 256 seconds. The results show a sequence width of 64 seconds being the better performer if we used the fixed sequence strategy width. After applying the dynamic window strategy, both visual inspection and the \gls*{trts} / \gls*{tstr} (see Tab.~\ref{tab:dynamic-window}) showed an improvement. This confirms that the dynamic window in fact improves the capabilities of the generator in contrast to using a fixed sequence width. \textcolor{blue}{\marginnote{RC22}Our dynamic window strategy, confirmed superior via visual inspection, notably outperformed the comparable yet non-decentralized TimeGAN model in both \gls*{trts} and \gls*{tstr} metrics (see Tab.~\ref{tab:dynamic-window}). This result reinforces the advantage of our method over related existing models.}
 
 \input{Tables/dynamic-window}
 %
