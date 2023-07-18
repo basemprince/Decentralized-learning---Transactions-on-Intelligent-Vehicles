@@ -1,0 +1,46 @@
+\def\genbarscaley{0.5}
+\def\genbarscalex{0.8}
+\begin{figure}[H]
+    \centering
+\begin{tikzpicture}[line width = 1pt,line cap=round, line join=round,anchor=center]  
+    
+\begin{axis}[
+    ybar, 
+    bar width=20pt,
+    ylabel={FID Score},
+    xlabel={Generator Number},
+    xtick=data,
+    ymin = 20,
+    % ymax= 235,
+    axis x line*=bottom,
+    axis y line=left,
+    axis line style={-,line width = 1pt},
+    width=\genbarscalex\textwidth,
+    height=\genbarscaley\textwidth,
+    error bars/y dir=both,
+    error bars/y explicit,
+    error bars/error bar style={
+      line width = 1 pt,
+      color=black
+    },
+    nodes near coords,
+    every node near coord/.style={
+        font=\bfseries,
+        color=white,
+        anchor=east,
+        rotate=90,
+        },
+    ]
+\addplot [fill=myblue ,line width = 1pt] table [
+    col sep=comma,
+    header=true,
+    x=gen, 
+    y=mean, 
+    y error=sd,
+    ] {Reply_to_comments/gen_mean_sd.csv};
+    
+\end{axis}    
+\end{tikzpicture}
+    \caption{FID mean score results for the nine generators}
+    \label{fig:gen-bargraph}
+\end{figure}
