@@ -1,0 +1,99 @@
+\section{Decentralized Training Strategies}
+
+% All this section will be 1/2 pages.
+During centralized \gls*{gan} training, the generator takes noise as input and produces fake data. The discriminator tries to classify it as fake or real. If the discriminator is successful, it provides feedback to the generator to help it improve its data generation. This process continues until the generator is able to produce data that is realistic enough to fool the discriminator.
+
+In a decentralized setting, there is one generator and multiple discriminators. 
+At the server side, the generator takes a random Gaussian noise as input and outputs fake samples. The fake samples are sent to each worker. The local discriminator at each worker is trained on both the local real samples and the fake samples received from the server. Two losses are calculated, the loss on real samples (Real Loss) and the loss on fake samples (Fake Loss). 
+%
+The fake loss is expected to be high when the discriminator is deceived by the fake samples. Conversely, if the fake loss is low, it means the discriminator was able to classify the fake sample correctly. The fake losses from all workers are compared to each other. We examined three possible strategies to compare fake losses. 
+
+If we choose the worker with the highest fake loss, this would be the discriminator that was most deceived by the fake samples, which could be called \emph{most forgiving}. If we select the worker with the lowest fake loss, this corresponds to the discriminator that was most successful at distinguishing fake from real samples. This discriminator could be considered the \emph{least forgiving} or the most formidable adversary. The generator at the server side is trained against the chosen discriminator using back-propagation, whether it is the \emph{most} or \emph{least forgiving}. The break down of the architecture and logic for both strategies are shown in Fig.~\ref{fig:f2u_l}.
+%
+\def\ftouscale{0.6}
+\input{Figures/mf-lf-comp.tex}
+
+The third strategy is a \emph{weighted average}. In this setting, the discriminator parameters from each worker are all aggregated to form a global discriminator model. In order to emphasize the parameters of the discriminator with the highest loss (\emph{most forgiving}), we use a weight that reflects the calculated loss. This can be achieved by employing a Softmax function as shown in Fig.~\ref{fig:f2a_arc}. The Softmax function ensures that the output is a probability distribution, where each element is non-negative and the sum of all the elements is 1. The averaging process is shown in Alg.~\ref{alg:weighted_fed_avg}. The algorithm described is a modified Federated Average algorithm, which emphasizes the \emph{most forgiving} discriminator. However, we could easily switch the behaviour to favoring the \emph{least forgiving} (lowest loss) by multiplying fake losses by $-1$ before applying the Softmax.
+
+% \atB{Is there any novelty wrt the original approach? If not, I would remove the algorithm and explain it in the text.} 
+
+\input{Figures/f2a-arch.tex}
+
+\input{Algorithms/fed-avg.tex}
+
+\subsection{Data-set Pre-processing}
+\label{sec:data-pre-process}
+%
+ The data-set comes from Scania CV AB and it is specific to the \gls*{aps} system on the vehicle. The data-set is confidential, so the feature names have been redacted. It consists of 8 main features and the time domain is in seconds. Some of the data-set's features are discrete while others are continuous. Furthermore, the data-sets contain runs with normal behaviour, and others contain physical injected faults.
+%
+Figure~\ref{fig:scania-data} shows three runs performed under the same road conditions, with the first one having a normal \gls*{aps} behaviour, the second one exhibiting anomalous behaviour, and the third having the fault injected midway through the run (mixed data). Features 4, 6, and 7 are overlapping.
+
+\input{Figures/scania-data}
+
+To improve the training, data are usually normalized using, e.g., Min-Max normalization. In our case, each feature can be normalized based on the known (constant) capabilities of that specific sensor. %These boundaries are constant and known for any vehicle having the same sensors. 
+However, in practice, the span between the minimum and maximum values for each feature is much larger than the normal operating values and my not represent the real distribution.
+%
+To improve on the normalization technique, we implemented a slightly different approach.
+At the beginning of the communication, all workers would send their minimum and maximum values for each feature in their local data-set to the server. The server decides on minimum and maximum values based on the lowest minimum value and the highest maximum value among all the workers for each feature. The server sends the decided min and max values to all workers to be used to normalize their local data. The Figure~\ref{fig:normalize} show an example of such strategy. Note that the output from the generator will have data that is normalized based on the worker limits. That means there need be an extra step to un-normalize the data to switch it back to either normalized data based on the known capabilities of the features, or to real values.
+\newcommand\normscale{0.6}
+\input{Figures/normalize.tex}
+
+\subsection{Decentralized Training Sequence}
+%
+In the decentralized training sequence of our time-series \gls*{gan} model, we employ the Adam optimizer with a learning rate of 2e-4, and parameters $\beta1$ = 0.5, $\beta2$ = 0.999 for both generator and discriminator. We found that \gls*{mse} loss outperformed \gls*{bce}, especially in a decentralized setting. The noise dimension for the generator was set to 128 and the batch size used was 4. Our testing showed that in our decentralized training setup, overriding the models with the winning discriminator led to a degradation in performance. Therefore, the chosen worker does not override the other workers. The full training sequence of the decentralized time-series \gls*{gan} model involves the following steps:
+%
+\begin{itemize}
+\item For each epoch, a target sequence width is determined in order to calculate the necessary noise size and actual sequence width output from the generator.
+\item Random noise is generated and used to create fake sequences, which are then sent to all workers.
+\item Workers create samples from their local real data that match the sequence width of the fake data received.
+\item During each iteration, workers feed their discriminator a real sample with a target of one, and then feed it a fake sample with a target of zero.
+\item Loss is calculated for both the real and fake data using \gls*{mse} loss. The overall loss for each discriminator is the average of both losses.
+\item The overall loss is back-propagated to improve each discriminator using Adam optimizer~\cite{adam_optimizer}.
+\item The fake losses for all workers are compared, and based on the training strategy either:
+\begin{itemize}
+\item The worker with the highest/lowest loss is chosen.
+\item The weighed average of all discriminator parameters is used to create a global discriminator. % that overrides all the discriminators at each iteration.
+\end{itemize}
+\item The chosen worker's discriminator or the global discriminator's output on the fake data is used to calculate the loss of the generator with a target of one.
+\item The generator loss is used to back-propagate and improve the generator using Adam optimizer.
+\item Steps repeat with a different target sequence width.
+\end{itemize}
+
+
+\subsection{Evaluation Metrics}
+In the early stages of our project, while the model was primarily designed for image data, we used established evaluation metrics such as the \gls*{fid} score. The \gls{fid} score is a popular choice for evaluating the quality of images generated by \glspl*{gan}. However, as we shifted our focus to time-series data, it became clear that the \gls{fid} score is not directly applicable in this new context. This necessitated the development of a new evaluation methodology tailored to time-series data.
+\\
+Consequently, we decided to implement an auto-regressive model as a primary evaluation measure. Auto-regression is a tried and tested method for the analysis and forecasting of time-series data and has proven effective as a performance metric for time-series forecasting models~\cite{rnntimeseries}. This auto-regressive approach allows for the evaluation of a \gls*{gan} model in three distinctive ways:
+
+% To assess the performance of the presented models, we decided to implement an auto-regressive model as a primary evaluation measure. Auto-regression is a tried and tested method for the analysis and forecasting of time-series data and has proven effective as a performance metric for time-series forecasting models~\cite{rnntimeseries}. 
+% \\
+% WE NEED TO EXPLAIN BETTER HOW IT WORKS, WE NEED TO EXPAIN THE METRICS USED R2 MAE RMSE.
+% \\
+% Commonly for the images generated by \glspl*{gan}, the standard used to evaluate performance is \gls{fid} score. Due to its inherent characteristics, however, this index is of limited effectiveness for evaluating the quality of time-series.
+% The auto-regressive approach allows for the evaluation of a \gls*{gan} model in three distinctive ways: \cite{esteban2017realvalued}
+% }
+
+%\textcolor{blue}{In the early stages of our project, while the model was primarily designed for image data, we used established evaluation metrics such as the \gls*{fid} score. The \gls{fid} score is a popular choice for evaluating the quality of images generated by \glspl*{gan}. However, as we shifted our focus to time-series data, it became clear that the \gls{fid} score is not directly applicable in this new context. This necessitated the development of a new evaluation methodology tailored to time-series data.}
+
+%\textcolor{blue}{Consequently, we decided to implement an auto-regressive model as a primary evaluation measure. Auto-regression is a tried and tested method for the analysis and forecasting of time-series data and has proven effective as a performance metric for time-series forecasting models~\cite{rnntimeseries}. This auto-regressive approach allows for the evaluation of a \gls*{gan} model in three distinctive ways: \cite{esteban2017realvalued}}
+
+%\textcolor{red}{To quantitatively evaluate the time-series output, we used an autoregressive model. Autoregression is often used to analyze and forecast time-series data, and can be used as a metric for evaluating the performance of a forecasting model~\cite{rnntimeseries}. For \gls*{gan}, this can be done in 3 different ways:} %. Figure \ref{fig:trtr} visualizes those methods and they are as follows:
+\begin{itemize}
+    \item \textit{\gls*{trtr}:} Using only real data is useful to establish a baseline that determines how well the model is able to capture the statistical properties of the real data. This can then be used to validate the performance of the other methods.
+    \item \textit{\gls*{trts}:} Instead of testing on real data, the synthetic data generated by the 
+    \gls*{gan} model is used. This checks if the \gls*{gan} model has learned the underlying structure of the real data effectively.
+    \item \textit{\gls*{tstr}:} This is opposite of the previous method and will be used as a secondary metric. The method determines if the synthetic data generated by the \gls*{gan} is of sufficient quality to be used in place of real data for training purposes.
+\end{itemize}
+To asses the auto-regressive model's output we used three key metrics, which are the R2 Score, \gls*{mae}, and \gls*{rmse}. R2 Score measures the predictive capacity of the auto-regression model. It's used in \gls*{trtr} to establish a baseline performance, in \gls*{trts} to measure if the synthetic data preserves real data properties, and in \gls*{tstr} to see if knowledge from synthetic data applies to real data.
+\\
+\gls*{mae} and \gls*{rmse} are our chosen error metrics. \gls*{mae}  shows the average magnitude of prediction errors, while \gls*{rmse} highlights larger errors, indicating outliers. Together, they reveal the error distribution and the resemblance of synthetic data to real data. Low \gls*{mae} and \gls*{rmse} with high R2 signal successful \gls*{gan} models.
+\\
+Tab~\ref{tab:trtr-main} displays the \gls*{trtr} results, wherein the auto-regression model yields a higher R2 score when evaluated on the normal behavior data-set, suggesting that the model more accurately captures the underlying patterns in normal data compared to anomalous or mixed data. These results will act as our baseline to verify the results of our \gls*{trts} results.
+
+\input{Tables/trtr}
+
+%In our qualitative evaluation, we visually inspected the sequence output and further employed the use of \gls*{pca} by calculating it for both the real and synthetic data to visualize if the \gls*{gan} model has accurately captured the real data distribution.
+
+
+%\def\trtrscale{0.6}
+%\input{Figures/trtr.tex}

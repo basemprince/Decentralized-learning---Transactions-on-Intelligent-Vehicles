@@ -1,0 +1,66 @@
+\documentclass[journal]{IEEEtran}
+\usepackage{amsmath,amsfonts}
+% \usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{array}
+\usepackage[caption=false,font=scriptsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{marginnote}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage[acronym,sort=standard,nonumberlist]{glossaries}
+
+\renewcommand{\arraystretch}{1.5}
+
+%\usepackage{dblfloatfix} % To enable figures at the bottom of page
+
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\usepackage{balance}
+\usepackage[table,xcdraw,svgnames,dvipsnames]{xcolor}
+
+\usepackage{tikz-related}
+
+\providecommand{\atB  }[1]{\textcolor{red}{@Basem:~}\textcolor{blue}{#1}}
+
+\makeatletter
+% Reinsert missing \algbackskip
+\def\algbackskip{\hskip-\ALG@thistlm}
+\makeatother
+
+\begin{document}
+\title{Generating Synthetic Vehicle Data Using Decentralized Generative Adversarial Networks}
+\author{Basem Shaker$^{1}$, Gastone Pietro Rosati Papini$^{1,*}$, Matteo Saveriano$^{1}$, and Kuo-Yun Liang$^{2}$
+\thanks{$^{1}$Department of Industrial Engineering, University of Trento, Trento, Italy.}
+\thanks{$^{*}$Corresponding author: {\footnotesize{\tt gastone.rosatipapini@unitn.it}}.}
+\thanks{$^{2}$Scania CV AB, Södertälje, Sweden.}}
+
+%\markboth{Journal of \LaTeX\ Class Files,~Vol.~18, No.~9, September~2020}%
+%{How to Use the IEEEtran \LaTeX \ Templates}
+
+\maketitle
+
+\input{Sections/0.glossaries}
+
+\input{Sections/1.abstract}
+\input{Sections/2.introduction}
+\input{Sections/3.gan-architecture.tex}
+\input{Sections/4.training-strategies.tex}
+\input{Sections/5.results.tex}
+\input{Sections/6.conclusion.tex}
+
+\bibliographystyle{IEEEtran}
+%\bibliography{Master_Thesis}
+\bibliography{simplebib}
+
+\end{document}
+
+

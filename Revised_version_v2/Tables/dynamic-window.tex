@@ -1,0 +1,29 @@
+\begin{table}[t]
+\centering
+\caption{Dynamic window effect (anomalous behaviour)}
+\label{tab:dynamic-window}
+%\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lcccccc}
+\Xhline{1.5pt}
+\multicolumn{1}{c}{\multirow{2}{*}{\sc{\begin{tabular}[c]{@{}c@{}}Sequence \\ Width\end{tabular}}}} &
+  \multicolumn{3}{c}{\sc{TRTS}} &
+  \multicolumn{3}{c}{\sc{TSTR}} \\
+\multicolumn{1}{c}{} &
+  \sc{R2} &
+  \sc{MAE} &
+  \sc{RMSE} &
+  \sc{R2} & 
+  \sc{MAE} &
+  \sc{RMSE} \\ \Xhline{1pt}
+64 s  & 0.375 & 0.089 & 0.203 & 0.609 & 0.055	& 0.160 \\ \hline
+128 s & 0.352 & 0.084 & 0.206 & 0.599 & 0.054	& 0.165 \\ \hline
+256 s & 0.153 & 0.177 & 0.236 & -1.84 & 0.215	& 0.284 \\\hline
+Dynamic     & 0.550 & 0.070 & 0.171 & 0.621 & 0.051 & 0.162\\ \Xhline{1.6pt}
+TimeGAN     & 0.471	& 0.073	& 0.187	& 0.604	& 0.057	& 0.162\\ \Xhline{1.5pt}
+\end{tabular}%
+%}
+\end{table}
+
+
+
+

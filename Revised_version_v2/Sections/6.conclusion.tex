@@ -1,0 +1,28 @@
+\section{Conclusion and Future Work}
+% 1/1.5 columns.
+
+%We first visually evaluated the performance of the time-series based \gls*{gan} by examining the output and comparing the \gls*{pca} of the real and synthetic data. We performed the quantitative evaluation using auto-regression models trained on three types of behaviour data (anomalous, normal, mixed). We then calculated the \gls*{trts} and \gls*{tstr} metrics using these models.
+
+We presented an approach to generate synthetic anomalous vehicle sensor data that combines \gls*{gan} and \gls*{fl} to preserve the privacy of personal information. For the training strategies, %we compared the most and least forgiving. The most forgiving produced an output that only contained classes belonging to one behaviour, while the least forgiving produced a mix of classes from the available behaviours. This concluded that the most forgiving strategy consistently over-fits to a particular worker. This result was unexpected, as it did not align with the performance of the previously proposed \gls*{f2u} architecture in \cite{yonetani_decentralized_2019}. When the parameters of the winning discriminator were allowed to override the other workers' parameters, the behaviour of the two strategies was reversed. However, the output quality was significantly degraded in this case.
+%
+we evaluated the two forms of the weighted averaging (\gls*{f2a}) technique, namely most and least forgiving. %, and both performed similarly. There was however a significant degradation in the output compared to the most and least forgiving strategies.
+%
+We found the least forgiving training strategy to be the most effective in decentralized learning. It was able to maintain stable and non-divergent training, even with \gls*{niid} data. Additionally, the generated data produced by this strategy included all classes represented by the different workers, indicating good generalization capability. Furthermore, the generated features maintained the same correlations exhibited in the real data.
+%
+Testing concluded that the dynamic window strategy and normalization based on worker limits both improved the performance of the output. 
+
+%\atB{I would shorten the following in a paragraph of $\leq 10$ lines.}
+
+In our future research, we plan to employ the use of \textit{model compression} to reduce the size of the model while maintaining its performance level~\cite{hinton2015distilling} and to investigate the applicability of \textit{diffusion models}~\cite{alcaraz_diffusion-based_2022} to federated learning scenarios.  \textcolor{blue}{
+\marginnote{RC12} Moreover, we will investigate the possibility to make our model explainable relying on approaches from \textit{scenario engineering}~\cite{Li2022Features, Li2023Novel}.}
+
+% There are multiple opportunities for enhancement and areas for further exploration. The following list outlines several avenues for future research:
+
+
+% \begin{itemize}
+%     \item \textbf{Model compression:} Refers to the process of reducing the size of an \gls*{ml} model, while maintaining its performance and making it more compatible with edge devices. There are several methods of model compression, including pruning and knowledge distillation \cite{ye_three_2021}.
+%     \item \textbf{Diffusion models:} Investigate the use of diffusion models in an \gls*{fl} architecture to generate time-series data. They have been wildly successfully in image generation and time-series forecasting \cite{alcaraz_diffusion-based_2022}. In \cite{rasul2021autoregressive}, the authors presented a novel approach that combines auto-regressive modeling and de-noising diffusion models to effectively capture the dependencies and noise structure in multivariate time series data. Their proposed method demonstrates improved performance compared to existing state-of-the-art techniques in time series forecasting when tested on various benchmarks and real-world data-sets. 
+
+% \end{itemize}
+
+% \atB{Please check which papers have been published in a proper venue (e.g., conferences, journals, etc.). Arxiv is a collection of non-peer-reviewed paper and we should acknowledge effort to publish in real venues}

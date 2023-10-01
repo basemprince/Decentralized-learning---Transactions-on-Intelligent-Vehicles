@@ -17,12 +17,12 @@
 	\def\papertitle{Generating Synthetic Vehicle Data Using Decentralized Generative Adversarial Networks (T-IV-23-05-0965)}
 	\def\authors{B.~Shaker, G.~P.~Rosati~Papini, M.~Saveriano, and K.-Y.~Liang}
 	
-	\def\Editor{Dear Professor Fei-Yue Wang\\}
+	\def\Editor{Dear Professor Fei-Yue Wang}
 	
 	\def\Letter{Enclosed please find the replies to the Editor's and Reviewers' comments with a detailed statement of changes made in order to address those comments. We also attached a PDF file that highlights the changes in the revised version of the paper with respect to the previous version, where the blue colour marks the revised text.
-	\\ \\
-	Best regards,\\
-	\\
+	
+	Best regards,
+	
 	G. P. Rosati Papini
 }
 
@@ -127,7 +127,7 @@ We have also subjected the manuscript to careful proofreading using Grammarly so
 \RC The authors claim that the generated features maintained the same correlations exhibited in the real data. They should prove this idea with more experiments and metrics. For instance, metric: FID, KID, IS, etc.
 
 \AR We appreciate the reviewer's comment. FID, KID, and IS are generally used for evaluating the quality and diversity of images produced by GANs. They rely on using a pretrained model, like Inception v3, which was trained on images, to extract features from the generated and real data. Therefore, these metrics aren't directly applicable to time series data. In our manuscript, we presented an auto-regression model and have instead used R-squared (R2), Mean Absolute Error (MAE), and Root Mean Squared Error (RMSE) as part of our evaluation methodology to compare our generated time-series data with the real data. However, we have performed earlier tests with the GAN model on images before adapting it to time-series data, which were omitted from the manuscript as we wanted it to be very specific to vehicle sensor data.
-\\
+\newline
 We trained nine different decentralized training strategies, which were as follows: 
 \setlength{\columnsep}{-3cm}
 \begin{multicols}{2}[\small]
@@ -144,11 +144,10 @@ We trained nine different decentralized training strategies, which were as follo
     \item[]
 \end{enumerate}
 \end{multicols}
-\\
+\newline
 To decide on the best decentralized training strategy, all the trained generator models were saved at epoch number 200. Each generator's output was tested by calculating the FID score for 10 epochs. To level out the playing field across all generators, a random noise is produced and used by each generator to create fake images during each epoch. Furthermore, the same random set of real images are also used to calculate the FID score using the Inception network.
-\\
-The results depicted in Figure -- demonstrate that, among tested generators, generator number two (the least forgiving) performed the best. Both qualitative and quantitative evaluation metrics indicated that the least forgiving discriminator outperformed the other proposed strategies.
-
+\newline
+The results depicted in Figure 1 demonstrate that, among tested generators, generator number two (the least forgiving) performed the best. Both qualitative and quantitative evaluation metrics indicated that the least forgiving discriminator outperformed the other proposed strategies.
 \input{Reply_to_comments/gen-bar-graph}
 
 \begin{quote}
@@ -159,7 +158,7 @@ We have better justified the use of an auto-regressive model to evaluate perform
 
 \AR We thank the reviewer for verifying the absence of some important information and we now provide all necessary information.
 In particular, we employ the Adam optimizer with a learning rate of 2e-4, and parameters $\beta1$ = 0.5, $\beta2$ = 0.999 for both generator and discriminator.
-We found that \gls*{mse} loss outperformed \gls*{bce}, especially in a decentralized setting. The noise dimension for the generator was set to 128 and the batch size used was 4. 
+We found that MSE loss outperformed BCE, especially in a decentralized setting. The noise dimension for the generator was set to 128 and the batch size used was 4. 
 Our testing showed that in our decentralized training setup, overriding the models with the winning discriminator led to a degradation in performance. Therefore, the chosen worker does not override the other workers.
 
 %\begin{itemize}
@@ -231,7 +230,7 @@ In particular we report:
 \RC Comparison with related FL-based GANs is lacking, which makes it hard to assess the superiority of the proposed method.
 
 \AR We understand the reviewer's concern. As we were previously aware, there are no works with comparable characteristics. In order to overcome this weakness, as suggested by the reviewer, we have decided to compare ourselves with the work presenting TimeGANs even though this is not implemented in a decentralised manner. We report the table here for completeness of the results.
-\\\\\\
+\newline\newline
 \begin{tabular}{l|ccc|ccc}
 \hline
 Approaches &
@@ -251,7 +250,7 @@ Our approach (dynamic window)     & 0.550 & 0.070 & 0.171 & 0.621 & 0.051 & 0.16
 TimeGAN     & 0.471	& 0.073	& 0.187	& 0.604	& 0.057	& 0.162\\ 
 \hline
 \end{tabular}%
-\\\\\\
+\newline\newline\newline
 We conducted PCA analysis, which were omitted from the report due to space constraints, and the fact that results from TimeGAN is not quite relevant to the main body of the report. Here is a comparison of the PCA of our best performer, the least forgiving Decentralized model, vs. the centralized TimeGAN showing that our model were more successful in capturing the data distribution, while TimeGAN showed distributions that were not present in the real data:
 \input{Revised_version/Figures/timegan-pca}
 

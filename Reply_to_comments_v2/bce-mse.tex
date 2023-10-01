@@ -1,0 +1,55 @@
+\colorlet{myblue}{gray!60!blue}
+\colorlet{msecol}{orange}
+
+\def\bcescale{0.8}
+\def\bceyscale{0.5}
+\def\bcecol{myblue}
+
+\begin{figure}[htp]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=\bcescale]
+            \begin{axis} [
+                xlabel={Training Step},
+                ylabel={FID Score},
+                axis x line=bottom,
+                axis y line*=left,
+                yticklabels={},
+                line width=2pt,
+xtick={0,5000,10000,15000,20000,25000,30000},
+xticklabels={0,5k, 10k, 15k, 20k, 25k,30k},
+scaled ticks=false,
+                ]
+                \addplot[\bcecol, line width=2pt] table [col sep=comma,header=true,x index=3,y index=4] {Reply_to_comments_v2/bce-mse-smooth.csv};
+                \addplot[msecol, line width=2pt] table [col sep=comma,header=true,x index=3,y index=5] {Reply_to_comments_v2/bce-mse-smooth.csv};
+                \legend{BCE Loss, MSE Loss}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{One worker centralized result}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}[scale=\bcescale]
+            \begin{axis} [
+                xlabel={Training Step},
+                ylabel={FID Score},
+                axis x line=bottom,
+                axis y line*=left,
+                yticklabels={},
+                line width=2pt,
+xtick={0,5000,10000,15000,20000,25000,30000},
+xticklabels={0,5k, 10k, 15k, 20k, 25k,30k},
+scaled ticks=false,
+                ]
+                \addplot[\bcecol, line width=2pt] table [col sep=comma,header=true,x index=0,y index=1] {Reply_to_comments_v2/bce-mse-smooth.csv};
+                \addplot[msecol, line width=2pt] table [col sep=comma,header=true,x index=0,y index=2] {Reply_to_comments_v2/bce-mse-smooth.csv};
+                \legend{BCE Loss, MSE Loss}
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Five worker decentralized result}
+    \end{subfigure}
+    \caption{The FID score results of BCE vs. MSE loss}
+    \label{fig:bce-mse}
+\end{figure}

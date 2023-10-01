@@ -1,0 +1,1036 @@
+\glsdefs@newdocentry{gan}%
+{%
+name={\acronymfont {\glsentryshort {gan}}},%
+sort={GAN},%
+type={acronym},%
+first={GAN},%
+firstplural={GANs},%
+text={GAN},%
+plural={GANs},%
+description={Generative Adversarial Network},%
+descriptionplural={Generative Adversarial Network},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Generative Adversarial Network},%
+longplural={Generative Adversarial Networks},%
+short={GAN},%
+shortplural={GANs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{ann}%
+{%
+name={\acronymfont {\glsentryshort {ann}}},%
+sort={ANN},%
+type={acronym},%
+first={ANN},%
+firstplural={ANNs},%
+text={ANN},%
+plural={ANNs},%
+description={Artificial Neural Network},%
+descriptionplural={Artificial Neural Network},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Artificial Neural Network},%
+longplural={Artificial Neural Networks},%
+short={ANN},%
+shortplural={ANNs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{cnn}%
+{%
+name={\acronymfont {\glsentryshort {cnn}}},%
+sort={CNN},%
+type={acronym},%
+first={CNN},%
+firstplural={CNNs},%
+text={CNN},%
+plural={CNNs},%
+description={Convolutional Neural Network},%
+descriptionplural={Convolutional Neural Network},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Convolutional Neural Network},%
+longplural={Convolutional Neural Networks},%
+short={CNN},%
+shortplural={CNNs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{aps}%
+{%
+name={\acronymfont {\glsentryshort {aps}}},%
+sort={APS},%
+type={acronym},%
+first={APS},%
+firstplural={APSs},%
+text={APS},%
+plural={APSs},%
+description={Air Processing System},%
+descriptionplural={Air Processing System},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Air Processing System},%
+longplural={Air Processing Systems},%
+short={APS},%
+shortplural={APSs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{bce}%
+{%
+name={\acronymfont {\glsentryshort {bce}}},%
+sort={BCE},%
+type={acronym},%
+first={BCE},%
+firstplural={BCEs},%
+text={BCE},%
+plural={BCEs},%
+description={Binary Cross Entropy},%
+descriptionplural={Binary Cross Entropy},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Binary Cross Entropy},%
+longplural={Binary Cross Entropys},%
+short={BCE},%
+shortplural={BCEs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{mse}%
+{%
+name={\acronymfont {\glsentryshort {mse}}},%
+sort={MSE},%
+type={acronym},%
+first={MSE},%
+firstplural={MSEs},%
+text={MSE},%
+plural={MSEs},%
+description={Mean Square Error},%
+descriptionplural={Mean Square Error},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Mean Square Error},%
+longplural={Mean Square Errors},%
+short={MSE},%
+shortplural={MSEs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{iid}%
+{%
+name={\acronymfont {\glsentryshort {iid}}},%
+sort={IID},%
+type={acronym},%
+first={IID},%
+firstplural={IIDs},%
+text={IID},%
+plural={IIDs},%
+description={Independent and Identically Distributed},%
+descriptionplural={Independent and Identically Distributed},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Independent and Identically Distributed},%
+longplural={Independent and Identically Distributeds},%
+short={IID},%
+shortplural={IIDs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{niid}%
+{%
+name={\acronymfont {\glsentryshort {niid}}},%
+sort={non-IID},%
+type={acronym},%
+first={non-IID},%
+firstplural={non-IIDs},%
+text={non-IID},%
+plural={non-IIDs},%
+description={non-Independent and Identically Distributed},%
+descriptionplural={non-Independent and Identically Distributed},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={non-Independent and Identically Distributed},%
+longplural={non-Independent and Identically Distributeds},%
+short={non-IID},%
+shortplural={non-IIDs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{ml}%
+{%
+name={\acronymfont {\glsentryshort {ml}}},%
+sort={ML},%
+type={acronym},%
+first={ML},%
+firstplural={MLs},%
+text={ML},%
+plural={MLs},%
+description={Machine Learning},%
+descriptionplural={Machine Learning},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Machine Learning},%
+longplural={Machine Learnings},%
+short={ML},%
+shortplural={MLs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{lstm}%
+{%
+name={\acronymfont {\glsentryshort {lstm}}},%
+sort={LSTM},%
+type={acronym},%
+first={LSTM},%
+firstplural={LSTMs},%
+text={LSTM},%
+plural={LSTMs},%
+description={Long Short Term Memory},%
+descriptionplural={Long Short Term Memory},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Long Short Term Memory},%
+longplural={Long Short Term Memorys},%
+short={LSTM},%
+shortplural={LSTMs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{is}%
+{%
+name={\acronymfont {\glsentryshort {is}}},%
+sort={IS},%
+type={acronym},%
+first={IS},%
+firstplural={ISs},%
+text={IS},%
+plural={ISs},%
+description={Inception Score},%
+descriptionplural={Inception Score},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Inception Score},%
+longplural={Inception Scores},%
+short={IS},%
+shortplural={ISs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{fid}%
+{%
+name={\acronymfont {\glsentryshort {fid}}},%
+sort={FID},%
+type={acronym},%
+first={FID},%
+firstplural={FIDs},%
+text={FID},%
+plural={FIDs},%
+description={Fréchet Inception Distance},%
+descriptionplural={Fréchet Inception Distance},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Fréchet Inception Distance},%
+longplural={Fréchet Inception Distances},%
+short={FID},%
+shortplural={FIDs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{dcgan}%
+{%
+name={\acronymfont {\glsentryshort {dcgan}}},%
+sort={DCGAN},%
+type={acronym},%
+first={DCGAN},%
+firstplural={DCGANs},%
+text={DCGAN},%
+plural={DCGANs},%
+description={Deep Convolutional GAN},%
+descriptionplural={Deep Convolutional GAN},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Deep Convolutional GAN},%
+longplural={Deep Convolutional GANs},%
+short={DCGAN},%
+shortplural={DCGANs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{lsgan}%
+{%
+name={\acronymfont {\glsentryshort {lsgan}}},%
+sort={LSGAN},%
+type={acronym},%
+first={LSGAN},%
+firstplural={LSGANs},%
+text={LSGAN},%
+plural={LSGANs},%
+description={Least Squares GAN},%
+descriptionplural={Least Squares GAN},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Least Squares GAN},%
+longplural={Least Squares GANs},%
+short={LSGAN},%
+shortplural={LSGANs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{rnn}%
+{%
+name={\acronymfont {\glsentryshort {rnn}}},%
+sort={RNN},%
+type={acronym},%
+first={RNN},%
+firstplural={RNNs},%
+text={RNN},%
+plural={RNNs},%
+description={Recurrent Neural Network},%
+descriptionplural={Recurrent Neural Network},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Recurrent Neural Network},%
+longplural={Recurrent Neural Networks},%
+short={RNN},%
+shortplural={RNNs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{fedavg}%
+{%
+name={\acronymfont {\glsentryshort {fedavg}}},%
+sort={FedAvg},%
+type={acronym},%
+first={FedAvg},%
+firstplural={FedAvgs},%
+text={FedAvg},%
+plural={FedAvgs},%
+description={Federated Average},%
+descriptionplural={Federated Average},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Federated Average},%
+longplural={Federated Averages},%
+short={FedAvg},%
+shortplural={FedAvgs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{fl}%
+{%
+name={\acronymfont {\glsentryshort {fl}}},%
+sort={FL},%
+type={acronym},%
+first={FL},%
+firstplural={FLs},%
+text={FL},%
+plural={FLs},%
+description={Federated Learning},%
+descriptionplural={Federated Learning},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Federated Learning},%
+longplural={Federated Learnings},%
+short={FL},%
+shortplural={FLs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{kl}%
+{%
+name={\acronymfont {\glsentryshort {kl}}},%
+sort={KL},%
+type={acronym},%
+first={KL},%
+firstplural={KLs},%
+text={KL},%
+plural={KLs},%
+description={Kullback-Leibler},%
+descriptionplural={Kullback-Leibler},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Kullback-Leibler},%
+longplural={Kullback-Leiblers},%
+short={KL},%
+shortplural={KLs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{f2u}%
+{%
+name={\acronymfont {\glsentryshort {f2u}}},%
+sort={F2U},%
+type={acronym},%
+first={F2U},%
+firstplural={F2Us},%
+text={F2U},%
+plural={F2Us},%
+description={Forgiver-First Update},%
+descriptionplural={Forgiver-First Update},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Forgiver-First Update},%
+longplural={Forgiver-First Updates},%
+short={F2U},%
+shortplural={F2Us},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{f2a}%
+{%
+name={\acronymfont {\glsentryshort {f2a}}},%
+sort={F2A},%
+type={acronym},%
+first={F2A},%
+firstplural={F2As},%
+text={F2A},%
+plural={F2As},%
+description={Forgiver-First Aggregation},%
+descriptionplural={Forgiver-First Aggregation},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Forgiver-First Aggregation},%
+longplural={Forgiver-First Aggregations},%
+short={F2A},%
+shortplural={F2As},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{mdgan}%
+{%
+name={\acronymfont {\glsentryshort {mdgan}}},%
+sort={MD-GAN},%
+type={acronym},%
+first={MD-GAN},%
+firstplural={MD-GANs},%
+text={MD-GAN},%
+plural={MD-GANs},%
+description={Multi-Discriminator GAN},%
+descriptionplural={Multi-Discriminator GAN},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Multi-Discriminator GAN},%
+longplural={Multi-Discriminator GANs},%
+short={MD-GAN},%
+shortplural={MD-GANs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{effgan}%
+{%
+name={\acronymfont {\glsentryshort {effgan}}},%
+sort={EFFGAN},%
+type={acronym},%
+first={EFFGAN},%
+firstplural={EFFGANs},%
+text={EFFGAN},%
+plural={EFFGANs},%
+description={Ensembles of Fine-tuned Federated GAN},%
+descriptionplural={Ensembles of Fine-tuned Federated GAN},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Ensembles of Fine-tuned Federated GAN},%
+longplural={Ensembles of Fine-tuned Federated GANs},%
+short={EFFGAN},%
+shortplural={EFFGANs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{flgan}%
+{%
+name={\acronymfont {\glsentryshort {flgan}}},%
+sort={FL-GAN},%
+type={acronym},%
+first={FL-GAN},%
+firstplural={FL-GANs},%
+text={FL-GAN},%
+plural={FL-GANs},%
+description={Federated Learning GAN},%
+descriptionplural={Federated Learning GAN},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Federated Learning GAN},%
+longplural={Federated Learning GANs},%
+short={FL-GAN},%
+shortplural={FL-GANs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{mlp}%
+{%
+name={\acronymfont {\glsentryshort {mlp}}},%
+sort={MLP},%
+type={acronym},%
+first={MLP},%
+firstplural={MLPs},%
+text={MLP},%
+plural={MLPs},%
+description={Multilayer Perceptron},%
+descriptionplural={Multilayer Perceptron},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Multilayer Perceptron},%
+longplural={Multilayer Perceptrons},%
+short={MLP},%
+shortplural={MLPs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{pca}%
+{%
+name={\acronymfont {\glsentryshort {pca}}},%
+sort={PCA},%
+type={acronym},%
+first={PCA},%
+firstplural={PCAs},%
+text={PCA},%
+plural={PCAs},%
+description={Principal Component Analysis},%
+descriptionplural={Principal Component Analysis},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Principal Component Analysis},%
+longplural={Principal Component Analysiss},%
+short={PCA},%
+shortplural={PCAs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{trtr}%
+{%
+name={\acronymfont {\glsentryshort {trtr}}},%
+sort={TRTR},%
+type={acronym},%
+first={TRTR},%
+firstplural={TRTRs},%
+text={TRTR},%
+plural={TRTRs},%
+description={Train on Real Test on Real},%
+descriptionplural={Train on Real Test on Real},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Train on Real Test on Real},%
+longplural={Train on Real Test on Reals},%
+short={TRTR},%
+shortplural={TRTRs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{trts}%
+{%
+name={\acronymfont {\glsentryshort {trts}}},%
+sort={TRTS},%
+type={acronym},%
+first={TRTS},%
+firstplural={TRTSs},%
+text={TRTS},%
+plural={TRTSs},%
+description={Train on Real Test on Synthetic},%
+descriptionplural={Train on Real Test on Synthetic},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Train on Real Test on Synthetic},%
+longplural={Train on Real Test on Synthetics},%
+short={TRTS},%
+shortplural={TRTSs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{tstr}%
+{%
+name={\acronymfont {\glsentryshort {tstr}}},%
+sort={TSTR},%
+type={acronym},%
+first={TSTR},%
+firstplural={TSTRs},%
+text={TSTR},%
+plural={TSTRs},%
+description={Train on Synthetic Test on Real},%
+descriptionplural={Train on Synthetic Test on Real},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Train on Synthetic Test on Real},%
+longplural={Train on Synthetic Test on Reals},%
+short={TSTR},%
+shortplural={TSTRs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{vae}%
+{%
+name={\acronymfont {\glsentryshort {vae}}},%
+sort={VAE},%
+type={acronym},%
+first={VAE},%
+firstplural={VAEs},%
+text={VAE},%
+plural={VAEs},%
+description={Variational Autoencoder},%
+descriptionplural={Variational Autoencoder},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Variational Autoencoder},%
+longplural={Variational Autoencoders},%
+short={VAE},%
+shortplural={VAEs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{fc}%
+{%
+name={\acronymfont {\glsentryshort {fc}}},%
+sort={FC},%
+type={acronym},%
+first={FC},%
+firstplural={FCs},%
+text={FC},%
+plural={FCs},%
+description={Fully Connected},%
+descriptionplural={Fully Connected},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Fully Connected},%
+longplural={Fully Connecteds},%
+short={FC},%
+shortplural={FCs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{relu}%
+{%
+name={\acronymfont {\glsentryshort {relu}}},%
+sort={ReLU},%
+type={acronym},%
+first={ReLU},%
+firstplural={ReLUs},%
+text={ReLU},%
+plural={ReLUs},%
+description={Rectified Linear Unit},%
+descriptionplural={Rectified Linear Unit},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Rectified Linear Unit},%
+longplural={Rectified Linear Units},%
+short={ReLU},%
+shortplural={ReLUs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{tanh}%
+{%
+name={\acronymfont {\glsentryshort {tanh}}},%
+sort={TanH},%
+type={acronym},%
+first={TanH},%
+firstplural={TanHs},%
+text={TanH},%
+plural={TanHs},%
+description={Hyperbolic Tangent},%
+descriptionplural={Hyperbolic Tangent},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Hyperbolic Tangent},%
+longplural={Hyperbolic Tangents},%
+short={TanH},%
+shortplural={TanHs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{adam}%
+{%
+name={\acronymfont {\glsentryshort {adam}}},%
+sort={Adam},%
+type={acronym},%
+first={Adam},%
+firstplural={Adams},%
+text={Adam},%
+plural={Adams},%
+description={Adaptive Moment Estimation},%
+descriptionplural={Adaptive Moment Estimation},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Adaptive Moment Estimation},%
+longplural={Adaptive Moment Estimations},%
+short={Adam},%
+shortplural={Adams},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{sgd}%
+{%
+name={\acronymfont {\glsentryshort {sgd}}},%
+sort={SGD},%
+type={acronym},%
+first={SGD},%
+firstplural={SGDs},%
+text={SGD},%
+plural={SGDs},%
+description={Stochastic Gradient Descent},%
+descriptionplural={Stochastic Gradient Descent},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Stochastic Gradient Descent},%
+longplural={Stochastic Gradient Descents},%
+short={SGD},%
+shortplural={SGDs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{svd}%
+{%
+name={\acronymfont {\glsentryshort {svd}}},%
+sort={SVD},%
+type={acronym},%
+first={SVD},%
+firstplural={SVDs},%
+text={SVD},%
+plural={SVDs},%
+description={Singular Value Decomposition},%
+descriptionplural={Singular Value Decomposition},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Singular Value Decomposition},%
+longplural={Singular Value Decompositions},%
+short={SVD},%
+shortplural={SVDs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{mae}%
+{%
+name={\acronymfont {\glsentryshort {mae}}},%
+sort={MAE},%
+type={acronym},%
+first={MAE},%
+firstplural={MAEs},%
+text={MAE},%
+plural={MAEs},%
+description={Mean Absolute Error},%
+descriptionplural={Mean Absolute Error},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Mean Absolute Error},%
+longplural={Mean Absolute Errors},%
+short={MAE},%
+shortplural={MAEs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{rmse}%
+{%
+name={\acronymfont {\glsentryshort {rmse}}},%
+sort={RMSE},%
+type={acronym},%
+first={RMSE},%
+firstplural={RMSEs},%
+text={RMSE},%
+plural={RMSEs},%
+description={Root Mean Square Error},%
+descriptionplural={Root Mean Square Error},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Root Mean Square Error},%
+longplural={Root Mean Square Errors},%
+short={RMSE},%
+shortplural={RMSEs},%
+counter={page},%
+parent={},%
+%
+}%
+

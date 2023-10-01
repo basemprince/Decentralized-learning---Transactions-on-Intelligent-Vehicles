@@ -1,0 +1,50 @@
+\def\batchscale{0.5}
+\def\batchyscale{0.25}
+\def\batchcol{myblue}
+\def\batchtcol{orange}
+\begin{figure}[htp]
+    \centering
+\subfloat[Image output]{
+\begin{tikzpicture}[label distance=-3mm]
+\clip(-1.8,-2.7) rectangle (6.1,2);
+\node[inner sep=0pt,label={below:Most Forgiving}] (sixty) at (0,0)
+    {\includegraphics[scale=0.4]{Images/max-im.png}};
+\node[inner sep=0pt,right = -2.4 cm of sixty,label={below:Least Forgiving}] (sixteen)
+    {\includegraphics[scale=0.4]{Images/min-im.png}};
+\end{tikzpicture}}\\
+\subfloat[Worker contribution]{
+\begin{tikzpicture}[line width = 1pt,line cap=round, line join=round,anchor=center]  
+    
+\begin{axis}[
+    ybar, 
+    bar width=20pt,
+    ylabel={Contribution},
+    xlabel={Training Strategy},
+    axis x line*=bottom,
+    axis y line=left,
+    xtick={1,2},
+    xticklabels={Most Forgiving, Least Forgiving},
+    axis line style={-,line width = 1pt},
+    width=\batchscale\textwidth,
+    height=\batchyscale\textwidth,
+    xmin = 0.5,
+    xmax = 2.5,
+    scaled ticks=false,
+    ymin=0,
+    ymax= 14000,
+    ytick=\empty,
+    ]
+\addplot [fill=\batchcol ,line width = 1pt] coordinates{
+   (1,12000)
+   (2,7700)
+   };
+\addplot [fill=\batchtcol ,line width = 1pt] coordinates{
+   (1,3000)
+   (2,7200)};
+\legend{Worker \#1, Worker \#2}
+   
+\end{axis}    
+\end{tikzpicture}}
+\caption{Image output and contribution results for most vs. least forgiving}
+\label{fig:least-most-result}
+\end{figure}
